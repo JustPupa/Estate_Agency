@@ -1,0 +1,9 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Real_Estate_Agency",
+    "version": "1.0"
+  },
+  "paths": { },
+  "components": { }
+}

@@ -1,0 +1,48 @@
+﻿@model bool
+@{
+    ViewData["Title"] = "Вход";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/css/authentication.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class='bold-line'></div>
+<div class='container'>
+    <div class='window'>
+        <div class='overlay'></div>
+        <div class='content'>
+            <div class='welcome'>Вход в систему</div>
+            <div class='subtitle'>Авторизируйтесь или продолжите в качестве гостя</div>
+            <form method="post">
+                <div class='input-fields'>
+                    <input name="login" type='text' id="login" placeholder='Логин' class='input-line full-width'>
+                    <input name="password" type='password' id="password" placeholder='Пароль' class='input-line full-width'>
+                </div>
+                <div>
+                    <button type="submit" id="logBtn" class='ghost-round full-width'>Войти</button>
+                </div>
+            </form>
+            <div id="clue" hidden>
+                Неверные данные для входа.<br />Если вы не зарегестрированы, попробуйте зайти как <b>гость</b>
+            </div>
+            <div>
+                <a href="@Url.Action("EnterAsGuest", "Home")">Продолжить как гость</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            if(@Model.ToString().ToLower() === false) {
+                let clue = document.querySelector('#clue');
+                clue.removeAttribute("hidden");
+                setTimeout(function () {
+                    clue.setAttribute("hidden", "");
+                }, 3500);
+            }
+        });
+    </script>
+}

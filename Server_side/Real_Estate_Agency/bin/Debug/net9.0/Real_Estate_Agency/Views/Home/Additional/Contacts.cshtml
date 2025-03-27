@@ -1,0 +1,77 @@
+﻿@model Real_Estate_Agency.Models.User;
+
+@{
+    ViewData["Title"] = $"Контакты";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/css/contacts.css")" rel="stylesheet" type="text/css" />
+}
+
+<header>
+    <div class="companyLogo">
+        <div>
+            <img src="~/Images/home.png"/>
+        </div>
+        <div class="blockEnd">
+            <span class="orgTitle">Агенство недвижимости</span>
+        </div>
+    </div>
+    <div class="optionsArea">
+        <div class="menuItem"><a href="@Url.Action("Authentication", "Home")">Выход</a></div>
+    </div>
+</header>
+
+
+<div class="center">
+    <div class="card">
+        <div class="additional">
+            <div class="user-card">
+                <img src="~/images/woman1.jpg" height="150" width="150" />
+            </div>
+            <div class="more-info">
+                <h1>Менеджерова Татьяна Сергеевна</h1>
+                <div class="coords">
+                    <span>Главный менеджер</span>
+                </div>
+                <div class="coords">
+                    <span>В организации с 2012 года</span>
+                </div>
+            </div>
+        </div>
+        <div class="general">
+            <h1>Менеджерова Татьяна Сергеевна</h1>
+            <p>
+                Профессиональная консультация, контроль процесса<br />
+                Обладатель 16 персональных наград и дипломов<br />
+                Заключено более 350 сделок<br />
+            </p>
+            <span class="more">Тел. 7(21)992-30-65, <a href="">ManagerTS@real.ru</a></span>
+        </div>
+    </div>
+
+    <div class="card green">
+        <div class="additional">
+            <div class="user-card">
+                <img src="~/images/woman2.jpg" height="150" width="150" />
+            </div>
+            <div class="more-info">
+                <h1>Риэлторовна Жанна Викторовна</h1>
+                <div class="coords">
+                    <span>Ведущий риэлтор</span>
+                </div>
+                <div class="coords">
+                    <span>В организации с 2017 года</span>
+                </div>
+            </div>
+        </div>
+        <div class="general">
+            <h1>Риэлторовна Жанна Викторовна</h1>
+            <p>
+                Персональный подбор, индивидуальная консультация<br />
+                Заключено более 260 сделок<br />
+            </p>
+            <span class="more">Тел. 7(42)901-48-47, <a href="">RealtJV@real.ru</a></span>
+        </div>
+    </div>
+</div>

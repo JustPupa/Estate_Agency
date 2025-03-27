@@ -1,0 +1,399 @@
+﻿@{
+    User? realtor = (dynamic)Model.realtor;
+    List<int>? categoriesIds = (dynamic)Model.categoriesIds;
+    List<string>? categoriesStr = (dynamic)Model.categoriesStr;
+    List<Real_Estate_Agency.Dto.EstateFull>? estates = (dynamic)Model.estates;
+}
+
+@{
+    ViewData["Title"] = $"Риэлтор {realtor.Name}";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/css/realtor.css")" rel="stylesheet" type="text/css" />
+}
+
+<header>
+    <div class="companyLogo">
+        <div>
+            <img src="~/Images/home.png" height="150" width="150" />
+        </div>
+        <div class="blockEnd"><span class="orgTitle">Агенство недвижимости</span></div>
+    </div>
+    <div class="optionsArea">
+        <div class="menuItem"><a href="@Url.Action("Authentication", "Home")">Выход</a></div>
+    </div>
+</header>
+
+<div id="authIdDiv" hidden>@realtor.Id</div>
+
+<div class="creatorWide">
+    <h1>Создать новое объявление</h1>
+    <div class="creatorArea">
+        <div class="newFields">
+            <div>
+                <span>Цена: </span><input type="number" placeholder="Цена недвижимости"/>
+            </div>
+            <div>
+                <span>Кол-во комнат: </span><input type="number" placeholder="Кол-во комнат" />
+            </div>
+            <div>
+                <span>Категория: </span>
+                <select class="categorySelect">
+                    @for (int i = 0; i < categoriesIds.Count; i++)
+                    {
+                        <option value="@categoriesIds[i]">@categoriesStr[i]</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <span>Название: </span><input type="text" placeholder="Общее название" />
+            </div>
+            <div>
+                <span>Адрес: </span><input type="text" placeholder="Адрес" />
+            </div>
+            <div>
+                <span>Размер: </span><input type="number" placeholder="Площадь (кв.м.)" />
+            </div>
+        </div>
+        <button class="estateAddBtn" onclick="addEstate()">Создать объявление</button>
+    </div>
+
+</div>
+
+<div>
+    <h1>Мои объявления</h1>
+    <div class="cardsContainer">
+        @foreach (var card in estates)
+        {
+            <div class="estateCard">
+                <input type="number" value="@card.Id" hidden />
+                <div class="cardFields">
+                    <div class="fieldArea">
+                        <label>Название</label>
+                        <input type="text" value="@card.Name" />
+                    </div>
+                    <div class="fieldArea">
+                        <label>Цена</label>
+                        <input type="number" value="@card.Price.ToString().Replace(',','.')" />
+                    </div>
+                    <div class="fieldArea">
+                        <label>Кол-во комнат</label>
+                        <input type="number" value="@card.RoomCount" />
+                    </div>
+                    <div class="fieldArea">
+                        <label>Категория</label>
+                        <select>
+                            @for (int i = 0; i < categoriesIds.Count; i++)
+                            {
+                                <!option value="@categoriesIds[i]" @(categoriesIds[i] == card.Category?.Id ? "selected" : String.Empty)>
+                                    @categoriesStr[i]
+                                </!option>
+                            }
+                        </select>
+                    </div>
+                    <div class="fieldArea">
+                        <label>Адрес</label>
+                        <input type="text" value="@card.Address" />
+                    </div>
+                    <div class="fieldArea">
+                        <label>Размер (кв. м.)</label>
+                        <input type="number" value="@card.Size" />
+                    </div>
+                </div>
+                <div class="photoArea">
+                    @if (card.Photos != null)
+                    {
+                        @foreach (var photo in card.Photos)
+                        {
+                            <div class="photoContainer">
+                                <img src="@photo.PhotoUrl" />
+                                <button class="photoDelBtn" onclick="removePhoto(this)">Удалить</button>
+                            </div>
+
+                        }
+                    }
+                </div>
+                <div class='photoCreationDiv'>
+                    <button onclick="addPhoto(@card.Id, this);">Добавить фото</button>
+                    <input type="text" class="photoUrlInput" />
+                </div>
+                <button class="saveEstateBtn" onclick="saveEstate(this)">Сохранить</button>
+                <button class="delEstateBtn" onclick="delEstate(this)">Удалить</button>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function addEstate() {
+            let fields = document.querySelector('.newFields').children;
+            let price = fields[0].children[1].value;
+            let rooms = fields[1].children[1].value;
+            let categoryid = fields[2].children[1].value;
+            let name = fields[3].children[1].value;
+            let address = fields[4].children[1].value;
+            let size = fields[5].children[1].value;
+            let authid = document.querySelector('#authIdDiv').innerText;
+
+            $.ajax({
+                type: "Get",
+                url: "/Home/AddEstate?price=" + price + "&rooms=" + rooms
+                + "&category=" + categoryid+ "&name=" + name
+                + "&address=" + address + "&size=" + size+ "&author=" + authid,
+                success: function (data) {
+                    if(data==='-1') {
+                        alert('Не удалось добавить новое объявление. Обратитесь к администратору');
+                    }
+                    else {
+                        let cardDiv = document.createElement('div');
+                        cardDiv.className = 'estateCard';
+
+                        //Скрытый элемент, содержащий id текущей карты
+                        let hiddenId = document.createElement('input');                        
+                        hiddenId.type = 'number';
+                        hiddenId.setAttribute("value",data);
+                        hiddenId.hidden = true;
+                        cardDiv.appendChild(hiddenId);
+
+                        //Контейнер хранения всех изменяемых полей объявления
+                        let cardFields = document.createElement('div');
+                        cardFields.className = 'cardFields';
+
+                        //Название
+                        let cardNameDiv = document.createElement('div');
+                        cardNameDiv.className = 'fieldArea';
+                        let cardNameLabel = document.createElement('label');
+                        cardNameLabel.appendChild(document.createTextNode('Название'));
+                        let cardNameInput = document.createElement('input');
+                        cardNameInput.type = 'text';
+                        cardNameInput.setAttribute("value",name);
+                        cardNameDiv.appendChild(cardNameLabel);
+                        cardNameDiv.appendChild(cardNameInput);
+                        cardFields.appendChild(cardNameDiv);
+
+                        //Цена
+                        let cardPriceDiv = document.createElement('div');
+                        cardPriceDiv.className = 'fieldArea';
+                        let cardPriceLabel = document.createElement('label');
+                        cardPriceLabel.appendChild(document.createTextNode('Цена'));
+                        let cardPriceInput = document.createElement('input');
+                        cardPriceInput.type = 'number';
+                        cardPriceInput.setAttribute("value",price);
+                        cardPriceDiv.appendChild(cardPriceLabel);
+                        cardPriceDiv.appendChild(cardPriceInput);
+                        cardFields.appendChild(cardPriceDiv);
+
+                        //Количество комнат
+                        let cardRoomDiv = document.createElement('div');
+                        cardRoomDiv.className = 'fieldArea';
+                        let cardRoomLabel = document.createElement('label');
+                        cardRoomLabel.appendChild(document.createTextNode('Кол-во комнат'));
+                        let cardRoomInput = document.createElement('input');
+                        cardRoomInput.type = 'number';
+                        cardRoomInput.setAttribute("value",rooms);
+                        cardRoomDiv.appendChild(cardRoomLabel);
+                        cardRoomDiv.appendChild(cardRoomInput);
+                        cardFields.appendChild(cardRoomDiv);
+
+                        //Категория
+                        let cardCategoryDiv = document.createElement('div');
+                        cardCategoryDiv.className = 'fieldArea';
+                        let cardCategoryLabel = document.createElement('label');
+                        cardCategoryLabel.appendChild(document.createTextNode('Категория'));
+                        let categorySelect = document.createElement('select');
+                        let categoriesClone = document.querySelector('.categorySelect').cloneNode(1);
+                        Array.from(categoriesClone.children).forEach(cat => {
+                            let optionSlct = document.createElement('option');
+                            optionSlct.setAttribute("value",cat.value);
+                            optionSlct.appendChild(document.createTextNode(cat.text));
+                            if (cat.value == categoryid) {
+                                optionSlct.selected = true;
+                            }
+                            categorySelect.appendChild(optionSlct);
+                        });
+                        cardCategoryDiv.appendChild(cardCategoryLabel);
+                        cardCategoryDiv.appendChild(categorySelect);
+                        cardFields.appendChild(cardCategoryDiv);
+
+                        //Адрес
+                        let cardAddressDiv = document.createElement('div');
+                        cardAddressDiv.className = 'fieldArea';
+                        let cardAddressLabel = document.createElement('label');
+                        cardAddressLabel.appendChild(document.createTextNode('Адрес'));
+                        let cardAddrInput = document.createElement('input');
+                        cardAddrInput.type = 'text';
+                        cardAddrInput.setAttribute("value",address);
+                        cardAddressDiv.appendChild(cardAddressLabel);
+                        cardAddressDiv.appendChild(cardAddrInput);
+                        cardFields.appendChild(cardAddressDiv);
+
+                        //Размер жилплощади
+                        let cardSizeDiv = document.createElement('div');
+                        cardSizeDiv.className = 'fieldArea';
+                        let cardSizeLabel = document.createElement('label');
+                        cardSizeLabel.appendChild(document.createTextNode('Размер (кв. м.)'));
+                        let cardSizeInput = document.createElement('input');
+                        cardSizeInput.type = 'number';
+                        cardSizeInput.setAttribute("value",size);
+                        cardSizeDiv.appendChild(cardSizeLabel);
+                        cardSizeDiv.appendChild(cardSizeInput);
+                        cardFields.appendChild(cardSizeDiv);
+
+                        cardDiv.appendChild(cardFields);
+
+                        let photoArea = document.createElement('div');
+                        photoArea.className = 'photoArea';
+                        cardDiv.appendChild(photoArea);
+
+                        let cardAddPhotoDiv = document.createElement('div');
+                        cardAddPhotoDiv.className = 'photoCreationDiv';
+
+                        let cardAddPhoto = document.createElement('button');
+                        cardAddPhoto.setAttribute('onClick', 'addPhoto('+ data + ', this);');
+                        cardAddPhoto.appendChild(document.createTextNode('Добавить фото'));
+                        cardAddPhotoDiv.appendChild(cardAddPhoto);
+
+                        let cardAddPhotoUrl = document.createElement('input');
+                        cardAddPhotoUrl.type = 'text';
+                        cardAddPhotoUrl.className = 'photoUrlInput';
+                        cardAddPhotoDiv.appendChild(cardAddPhotoUrl);
+
+                        cardDiv.appendChild(cardAddPhotoDiv);
+
+                        let cardSaveBtn = document.createElement('button');
+                        cardSaveBtn.appendChild(document.createTextNode('Сохранить'));
+                        cardSaveBtn.setAttribute('onclick', 'saveEstate(this)');
+                        cardSaveBtn.classList.add('saveEstateBtn');
+                        cardDiv.appendChild(cardSaveBtn);
+
+                        let cardRemBtn = document.createElement('button');
+                        cardRemBtn.appendChild(document.createTextNode('Удалить'));
+                        cardRemBtn.setAttribute('onclick', 'delEstate(this)');
+                        cardRemBtn.classList.add('delEstateBtn');
+                        cardDiv.appendChild(cardRemBtn);
+
+                        let cardContainer = document.querySelector('.cardsContainer');
+                        cardContainer.appendChild(cardDiv);
+                    }
+                },
+                error: function (error) {
+                    alert('Нет ответа от сервера. Обратитесь к администратору. Подробности об ошибке см. в консоли');
+                    console.log(error);
+                }
+            });
+        }
+
+        function addPhoto(cardid, photoBlock) {
+            let photoUrl = photoBlock.parentElement.children[1].value.replaceAll("&", "%26");
+            if (photoUrl === '') {
+                alert('Введите ссылку на фотографию');
+                return;
+            }
+            $.ajax({
+            type: "Post",
+            url: "/Home/AddPhoto?estateid=" + cardid + "&photourl=" + photoUrl,
+            success: function (data) {
+                if(data===true) {
+                    photoBlock.parentElement.children[1].value = '';
+
+                    let photoArea = photoBlock.parentElement.parentElement.querySelector('.photoArea');
+
+                    let photoContainer = document.createElement('div');
+                    photoContainer.className = 'photoContainer';
+
+                    let photoImg = document.createElement('img');
+                    photoImg.src = photoUrl;
+                    photoContainer.appendChild(photoImg);
+                        
+                    let delPhoto = document.createElement('button');
+                    delPhoto.setAttribute('onclick', 'removePhoto(this)');
+                    delPhoto.classList.add('photoDelBtn');
+                    delPhoto.appendChild(document.createTextNode('Удалить'));
+                    photoContainer.appendChild(delPhoto);
+
+                    photoArea.appendChild(photoContainer);
+                }
+                else {
+                    alert('Не удалось добавить фотографию. Обратитесь к администратору');
+                }
+            },
+            error: function (error) {
+                alert('Нет ответа от сервера. Обратитесь к администратору. Подробности об ошибке см. в консоли');
+                console.log(error);
+            }
+            });
+        }
+
+        function removePhoto(button) {
+            let absoluteUrl = button.parentElement.children[0].getAttribute('src').replaceAll("&", "%26");
+            let cardid = button.parentElement.parentElement.parentElement.children[0].value;
+            $.ajax({
+            type: "Post",
+            url: "/Home/DelPhoto?cardid=" + cardid + "&photourl=" + absoluteUrl,
+            success: function (data) {
+                if(data===true) {
+                    button.parentElement.remove();
+                }
+                else {
+                    alert('Не удалось удалить фотографию. Обратитесь к администратору');
+                }
+            },
+            error: function (error) {
+                alert('Нет ответа от сервера. Обратитесь к администратору. Подробности об ошибке см. в консоли');
+                console.log(error);
+            }
+            });
+        }
+
+        function delEstate(button) {
+            let cardid = button.parentElement.children[0].value;
+            $.ajax({
+                type: "Post",
+                url: "/Home/DelEstate?estateid=" + cardid,
+                success: function (data) {
+                    if(data===true) {
+                        button.parentElement.remove();
+                    }
+                    else {
+                        alert('Не удалось удалить объявление. Обратитесь к администратору');
+                    }
+                },
+                error: function (error) {
+                    alert('Нет ответа от сервера. Обратитесь к администратору. Подробности об ошибке см. в консоли');
+                    console.log(error);
+                }
+            });
+        }
+
+        function saveEstate(button) {
+            if (confirm("Вы уверены, что хотите сохранить новые данные?") !== true) {
+                return;
+            }
+            let fields = button.parentElement.children[1].children;
+            let cardid = button.parentElement.children[0].value;
+            let name = fields[0].children[1].value
+            let price = fields[1].children[1].value
+            let rooms = fields[2].children[1].value
+            let category = fields[3].children[1].value
+            let address = fields[4].children[1].value
+            let size = fields[5].children[1].value
+            $.ajax({
+                type: "Post",
+                url: "/Home/UpdateEstate?estateid=" + cardid + "&name=" + name
+                + "&price=" + price + "&rooms=" + rooms + "&category=" + category
+                + "&address=" + address + "&size=" + size,
+                success: function (data) {
+                    if(data !== true) {
+                        alert('Не удалось удалить объявление. Обратитесь к администратору');
+                    }
+                },
+                error: function (error) {
+                    alert('Нет ответа от сервера. Обратитесь к администратору. Подробности об ошибке см. в консоли');
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,164 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Abel');
+
+html, body {
+	background: #FCEEB5;
+	font-family: Abel, Arial, Verdana, sans-serif;
+}
+
+.general h1, .more-info h1 {
+	font-size: 26px;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+}
+
+.card {
+	width: 450px;
+	height: 250px;
+	background-color: #fff;
+	background: linear-gradient(#f8f8f8, #fff);
+	box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+	border-radius: 6px;
+	overflow: hidden;
+	position: relative;
+	margin: 1.5rem;
+}
+
+.card h1 {
+	text-align: center;
+}
+
+.card .additional {
+	position: absolute;
+	width: 150px;
+	height: 100%;
+	background: linear-gradient(#dE685E, #EE786E);
+	transition: width 0.4s;
+	overflow: hidden;
+	z-index: 2;
+}
+
+.card.green .additional {
+	background: linear-gradient(#92bCa6, #A2CCB6);
+}
+
+
+.card:hover .additional {
+	width: 100%;
+	border-radius: 0 5px 5px 0;
+}
+
+.card .additional .user-card {
+	width: 150px;
+	height: 100%;
+	position: relative;
+	float: left;
+}
+
+.card .additional .user-card::after {
+	display: block;
+	position: absolute;
+	top: 10%;
+	right: -2px;
+	height: 80%;
+	border-left: 2px solid rgba(0,0,0,0.025);
+}
+
+.card .additional .more-info {
+	width: 300px;
+	float: left;
+	position: absolute;
+	left: 150px;
+	height: 100%;
+}
+
+.card .additional .more-info h1 {
+	color: #fff;
+}
+
+.card.green .additional .more-info h1 {
+	color: #224C36;
+}
+
+.card .additional .coords {
+	margin: 0 1rem;
+	color: #fff;
+	font-size: 1rem;
+}
+
+.card.green .additional .coords {
+	color: #325C46;
+}
+
+.card .general {
+	width: 300px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	box-sizing: border-box;
+	padding: 1rem;
+	padding-top: 0;
+}
+
+.card .general .more {
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+	font-size: 0.9em;
+}
+
+header {
+	display: flex;
+	text-align: center;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	background: #fff;
+	width: 100%;
+	box-shadow: 0px 4px 25px #c8e1e9;
+}
+
+.companyLogo {
+	margin-left: 15px;
+}
+
+.companyLogo img {
+	height: 120px;
+}
+
+.blockEnd {
+	margin-bottom: 1rem;
+}
+
+.orgTitle {
+	font-weight: 500;
+	margin-top: 75px;
+	text-align: center;
+	font-size: 1rem;
+	letter-spacing: 0px;
+	letter-spacing: 0.05rem;
+	margin-bottom: 1rem;
+}
+
+.optionsArea {
+	display: flex;
+	margin-left: auto;
+	margin-right: 20px;
+}
+
+.menuItem {
+	margin-left: 20px;
+	padding: 20px;
+	font-size: 1.5rem;
+	background-color: beige;
+	border-radius: 12px;
+}

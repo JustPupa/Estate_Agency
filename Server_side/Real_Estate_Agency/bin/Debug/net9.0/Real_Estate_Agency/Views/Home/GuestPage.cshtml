@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = $"Гость";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/css/authentication.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class='bold-line'></div>
+<div class='container'>
+    <div class='window'>
+        <div class='overlay'></div>
+        <div class='content'>
+            <div class='welcome'>Регистрация</div>
+            <div class='input-fields'>
+                <input type='text' value="" placeholder='Имя пользователя' class='input-line full-width username'>
+                <input type='text' value="" placeholder='Логин' class='input-line full-width login'>                
+                <input type='password' value="" placeholder='Пароль' class='input-line full-width pwd1'>
+                <input type='password' value="" placeholder='Введите пароль еще раз' class='input-line full-width pwd2'>
+            </div>
+            <div>
+                <button id="regBtn" onclick="register()" class='ghost-round'>Регистрация</button>
+                <button onclick="location.href='/'" class='ghost-round'>Вернуться</button>
+            </div>
+            <div id="clue" hidden>
+                Ошибка! Попробуйте ввести данные заново
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function register() {
+            let pwd1 = document.querySelector('.pwd1').value;
+            let pwd2 = document.querySelector('.pwd2').value;
+            if (pwd1 !== pwd2) {
+                printClue('Пароли не совпадают');
+                return;
+            }
+            let login = document.querySelector('.login').value;
+            let uname = document.querySelector('.username').value;
+            $.ajax({
+                type: "Get",
+                url: "/Home/Register?login=" + login + "&name=" + uname + "&password=" + pwd1,
+                success: function (data) {
+                    if(data===false) {
+                        printClue('Попробуйте ввести другие данные');
+                    }
+                    else {
+                        printClue('Аккаунт успешно создан');
+                    }
+                },
+                error: function (error) {
+                    alert('Нет ответа от сервера. Обратитесь к администратору. Подробности об ошибке см. в консоли')
+                    console.log(error);
+                }
+            });
+        }
+
+        function printClue(message) {
+            let clue = document.querySelector('#clue');
+            let defError = clue.innerText;
+            clue.innerText=message;
+            clue.removeAttribute("hidden");
+            setTimeout(function () {
+                clue.setAttribute("hidden", "");
+                clue.innerText=defError;
+            }, 3500);
+        }
+    </script>
+}

@@ -1,0 +1,142 @@
+﻿header {
+	display: flex;
+	text-align: center;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	box-shadow: 0px 4px 25px #c8e1e9;
+}
+
+.companyLogo {
+	margin-left: 15px;
+}
+
+.orgTitle {
+	font-weight: 500;
+	margin-top: 75px;
+	text-align: center;
+	font-size: 2rem;
+	letter-spacing: 0px;
+	letter-spacing: 0.05rem;
+	margin-bottom: 1rem;
+}
+
+.blockEnd {
+	margin-bottom: 1rem;
+}
+
+.menuItem {
+	margin-left: 20px;
+	padding: 20px;
+	font-size: 1.5rem;
+	background-color: beige;
+	border-radius: 12px;
+}
+
+.favPinDisable, .favPinEnable {
+	position: absolute;
+	cursor: pointer;
+}
+
+.favPinDisable:hover, .favPinEnable:hover {
+	filter:  brightness(1);
+	transition: 0.5s ease-out all;
+}
+
+.favPinDisable {
+	filter: brightness(0.4);
+	height: 35px !important;
+	width: 35px;
+}
+
+.favPinEnable {
+	filter: brightness(1);
+	height: 35px !important;
+	width: 35px;
+}
+
+.estateCard {
+	padding: 30px 30px;
+	background-color: #f2f1e9;
+	border-radius: 15px;
+	width: fit-content;
+	margin: 10px auto 20px 15px;
+}
+
+.estateCard div {
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.estateCard div div label {
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.estateCard img {
+	height: 200px;
+}
+
+.cardMainInfo {
+	border: 1px solid;
+	width: fit-content;
+	padding: 5px 75px;
+	border-radius: 12px;
+	margin-bottom: 10px;
+}
+
+.cardDetails {
+	border: 1px solid;
+	width: fit-content;
+	padding: 5px 75px;
+	border-radius: 12px;
+}
+
+.cardContacts {
+	margin-top: 10px;
+}
+
+.cardContacts div {
+	margin-bottom: 10px;
+}
+
+.filterCriteria {
+	background: beige;
+	width: fit-content;
+	padding: 20px;
+	margin: 20px;
+}
+
+.filterCriteria div[class] {
+	border: 1px solid;
+	border-radius: 12px;
+	padding: 10px;
+	background: #d4ffff;
+	margin-bottom: 5px;
+}
+
+.roomBlock div {
+	background: beige;
+	width: fit-content;
+	padding: 5px;
+	border-radius: 15px;
+	margin-top: 5px;
+}
+
+.filterOnBtn, .filterOffBtn {
+	border: none;
+	padding: 7px 15px;
+	font-size: 20px;
+	border-radius: 15px;
+	color: #fff;
+}
+
+.filterOnBtn {
+	background: #04AA6D;
+}
+
+.filterOffBtn {
+	background: #f44336;
+	float: right;
+}

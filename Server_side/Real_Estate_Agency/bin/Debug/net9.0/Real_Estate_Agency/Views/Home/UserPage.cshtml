@@ -1,0 +1,212 @@
+﻿@{
+    User? customer = (dynamic)Model.customer;
+    List<Category>? categories = (dynamic)Model.categories;
+    List<Real_Estate_Agency.Dto.EstateFull>? estates = (dynamic)Model.estates;
+    List<int>? favorites = (dynamic)Model.favorites;
+}
+
+@{
+    ViewData["Title"] = $"Пользователь {customer.Name}";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/css/userpage.css")" rel="stylesheet" type="text/css" />
+}
+
+<header>
+    <div class="companyLogo">
+        <div>
+            <img src="~/Images/home.png" height="150" width="150" />
+        </div>
+        <div class="blockEnd">
+            <span class="orgTitle">Агенство недвижимости</span>
+        </div>
+    </div>
+    <div>
+        <div class="menuItem"><a href="@Url.Action("Contacts", "Home", customer)">Контакты</a></div>
+    </div>
+    <div>
+        <div class="menuItem"><a href="">Новости</a></div>
+    </div>
+    <div>
+        <div class="menuItem"><a href="@Url.Action("Authentication", "Home")">Выход</a></div>
+    </div>
+</header>
+
+<div id="UserPageContainer">
+    <div class="filterCriteria">
+        <div class="categoryBlock">
+            <h1>Категории недвижимости:</h1>
+            <select>
+                <option value="0" selected>Все</option>
+                @foreach (var category in categories)
+                {
+                    <option value="@category.Id">@category.Name</option>
+                }
+            </select>
+        </div>
+        <div class="priceBlock">
+            <h1>Цена:</h1>
+            <input type="number" placeholder="От: " />
+            <input type="number" placeholder="До: " />
+        </div>
+        <div class="roomBlock">
+            <h1>Количество комнат:</h1>
+            <div>
+                <input type="radio" id="0" name="roomRadio" value="0" checked />
+                <label for="0">Любое</label>
+            </div>
+            <div>
+                <input type="radio" id="1" name="roomRadio" value="1" />
+                <label for="1">1</label>
+            </div>
+            <div>
+                <input type="radio" id="2" name="roomRadio" value="2" />
+                <label for="2">2</label>
+            </div>
+            <div>
+                <input type="radio" id="3" name="roomRadio" value="3" />
+                <label for="3">3+</label>
+            </div>
+        </div>
+        <button class="filterOnBtn" onclick="getByFilter()">Показать</button>
+        <button class="filterOffBtn" onclick="resetFilter()">Сбросить фильтр</button>
+    </div>
+    
+
+    <div class="cardsContainer" id="cardsContainer">
+        @foreach(var card in estates)
+        {
+            <div class="estateCard">
+                <div hidden>@card.Id</div>
+                <div class="cardMainInfo">
+                    <div class="estName">@card.Name</div>
+                    <div><label>Цена: </label>@card.Price</div>
+                </div>
+                <div class="cardDetails">
+                    <div><label>Площадь: </label>@card.Size кв.м.</div>
+                    <div><label>Кол-во комнат: </label>@card.RoomCount</div>
+                    <div><label>Адрес: </label>@card.Address</div>
+                </div>
+                <div class="cardContacts">
+                    <div><label>Опубликовал(-а): </label>@card.Author?.Name</div>
+                    <div><label>Контакты: </label>@card.Author?.Phone</div>
+                </div>
+                @if (card.Photos != null)
+                {
+                    <div>
+                        <img src="~/Images/heart.png" class='@(favorites.Contains(card.Id)?"favPinEnable":"favPinDisable")' onclick="toggleFavorite(@card.Id, this)"/>
+                    </div>
+                    @foreach (var photo in card.Photos)
+                    {
+                        <img src="@photo.PhotoUrl"/>
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@@babel/standalone/babel.min.js"></script>
+    @* <script type="text/jsx" src="@Url.Content("~/Scripts/EstateCard.jsx")"></script> *@
+    <script type="text/jsx" src="@Url.Content("~/Scripts/Hello.jsx")"></script>
+
+    <script>
+        function getByFilter() {
+            let category = document.querySelector('.categoryBlock select').value;
+            let minValue = document.querySelectorAll('.priceBlock input')[0].value;
+            let maxValue = document.querySelectorAll('.priceBlock input')[1].value;
+            let rooms = document.querySelector('.roomBlock input[type=radio]:checked').value;
+
+            $.ajax({
+                type: "Get",
+                url: "/Home/GetEstateByFilter?categoryId=" + category + "&priceMin=" +
+                    minValue + "&priceMax=" + maxValue+ "&roomNum=" + rooms,
+                success: function (data) {
+                    printData(data);
+                },
+                error: function (error) {
+                    alert('Нет ответа от сервера. Обратитесь к администратору. Подробности об ошибке см. в консоли')
+                    console.log(error);
+                }
+            });
+        }
+
+        function resetFilter() {
+            document.querySelector('.categoryBlock select').selectedIndex = 0;
+            let inputs = document.querySelectorAll('.priceBlock input');
+            inputs[0].value='';
+            inputs[1].value='';
+            document.querySelector('.roomBlock input').checked = true;
+
+            $.ajax({
+                type: "Get",
+                url: "/Home/GetAllEstates",
+                success: function (data) {
+                    printData(data);
+                },
+                error: function (error) {
+                    alert('Нет ответа от сервера. Обратитесь к администратору. Подробности об ошибке см. в консоли')
+                    console.log(error);
+                }
+            });
+        }
+
+        function printData(data) {
+            let favsJs = [];
+            favsJs.push(@string.Join(',', favorites));
+
+
+
+            // let container = document.querySelector('.cardsContainer');
+            // container.innerHTML = '';
+
+            // data.forEach(item => {
+                // <BuildCard id="item.id" name="item.name" price="item.price" size="item.size"
+                //     roomCount="item.roomCount" address="item.address" author="item.address"
+                //     toggleFavorite="toggleFavorite" photos="item.photos" favs="favsJs"/>,
+                
+            // });
+
+            // ReactDOM.createRoot(
+            //     document.getElementById('cardsContainer')
+            // )
+            // .render(
+            //     <div>
+            //         <Person name="Bob" age="46" />
+            //         <Person name="Bob" />
+            //         <Person />
+            //     </div>
+            // );
+
+            // ReactDOM.render(
+            //     <HelloWorld />,
+            //     document.getElementById('cardsContainer')
+            // );
+        }
+
+        function toggleFavorite(estate, card) {
+            $.ajax({
+                type: "Get",
+                url: "/Home/ToggleFavEstate?userid=" + @customer.Id + "&estateid=" + estate,
+                success: function (data) {
+                    if(data===true) {
+                        card.classList.remove('favPinDisable');
+                        card.classList.add('favPinEnable');
+                    }
+                    else {
+                        card.classList.remove('favPinEnable');
+                        card.classList.add('favPinDisable');
+                    }
+                },
+                error: function (error) {
+                    alert('Нет ответа от сервера. Обратитесь к администратору. Подробности об ошибке см. в консоли')
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+}
