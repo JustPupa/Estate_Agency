@@ -7,7 +7,7 @@ import UserPage from "./components/UserPage.jsx"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 createRoot(document.getElementById('root')).render(
-  <div className="w-full flex justify-center">
+  <div className="w-full flex">
     <Provider>
       {/* Only in dev mode */}
       {/* <React.StrictMode> */}

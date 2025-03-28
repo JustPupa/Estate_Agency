@@ -25,3 +25,17 @@ export const getUserData = async (login, password, key) => {
         console.error(e.response.data);
     }
 }
+
+export const getFiltered = async (category, min, max, room) => {
+    try {
+        const params = {
+            category: category,
+            minprice: min,
+            maxprice: max,
+            rooms: room
+        }
+        return await axios.get('https://localhost:7103/specs/getByFilter', { params });
+    } catch(e) {
+        console.error(e.response.data);
+    }
+}

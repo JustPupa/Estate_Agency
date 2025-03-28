@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Real_Estate_Agency.Dto;
 using Real_Estate_Agency.Models;
 
 namespace Real_Estate_Agency.Repositories
@@ -21,9 +22,9 @@ namespace Real_Estate_Agency.Repositories
             return context?.Users.First(u => u.Id == id);
         }
         //Найти пользователя по логину и паролю
-        public async static Task<User?> GetByCredentialsAsync(string login, string password)
+        public async static Task<User?>? GetByCredentialsAsync(string login, string password)
         {
-            return await context?.Users?.FirstOrDefaultAsync(u => u.Login == login && u.Password == password); ;
+            return await context?.Users?.FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
         }
         //Создать нового пользователя-клиента
         public static bool CreateClient(string login, string name, string password)
@@ -60,31 +61,31 @@ namespace Real_Estate_Agency.Repositories
             return context?.Estates.ToList();
         }
         //Выбрать недвижимость по фильтру
-        public static List<RealEstate>? GetEstateByFilter(int? categoryId, decimal? priceMin, decimal? priceMax, int? roomNum)
+        public static async Task<List<EstateFull>> GetEstateByFilter(int? categoryId, decimal? priceMin, decimal? priceMax, int? roomNum)
         {
-            var result = context?.Estates.AsQueryable();
+            var result = context?.Estates.ToList();
             if (categoryId != null && categoryId != 0)
             {
-                result = result?.Where(e => e.CategoryId == categoryId);
+                result = result?.Where(e => e.CategoryId == categoryId).ToList();
             }
-            if (priceMin != null)
+            if (priceMin != null && priceMin != 0)
             {
-                result = result?.Where(e => e.Price >= priceMin);
+                result = result?.Where(e => e.Price >= priceMin).ToList();
             }
-            if (priceMax != null)
+            if (priceMax != null && priceMax != 0)
             {
-                result = result?.Where(e => e.Price <= priceMax);
+                result = result?.Where(e => e.Price <= priceMax).ToList();
             }
-            if (roomNum != null)
+            if (roomNum != null && roomNum != 0)
             {
                 switch (roomNum)
                 {
-                    case 1: result = result?.Where(e => e.RoomCount == 1); break;
-                    case 2: result = result?.Where(e => e.RoomCount == 2); break;
-                    case 3: result = result?.Where(e => e.RoomCount >= 3); break;
+                    case 1: result = result?.Where(e => e.RoomCount == 1).ToList(); break;
+                    case 2: result = result?.Where(e => e.RoomCount == 2).ToList(); break;
+                    case 3: result = result?.Where(e => e.RoomCount >= 3).ToList(); break;
                 }
             }
-            return result?.ToList();
+            return result.Select(e => EstateFull.EstateToFull(e)).ToList();
         }
         //Выбрать предложения о продаже по автору
         public static List<RealEstate>? GetEstatesByAuthor(int authid)

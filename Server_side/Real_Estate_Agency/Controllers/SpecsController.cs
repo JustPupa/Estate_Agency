@@ -9,11 +9,7 @@ namespace Real_Estate_Agency.Controllers;
 
 public class SpecsController : ControllerBase
 {
-    [HttpPost]
-    public IActionResult Create([FromBody] CreateSpecRequest request, CancellationToken ct)
-    {
-        return Ok();
-    }
+    //Check if user credentials are valid and return encrypted data is true
     [HttpPost]
     public async Task<IActionResult> Login([FromBody]UserRequest request)
     {
@@ -27,6 +23,8 @@ public class SpecsController : ControllerBase
         }
         return Unauthorized("Login or password is invalid. Try again");
     }
+    
+    //Get all page data for user according to his role
     [HttpGet]
     public async Task<IActionResult> GetUserData(AuthorizationRequest request)
     {
@@ -62,6 +60,25 @@ public class SpecsController : ControllerBase
             _ => BadRequest("No page is available for provided credentials")
         };
     }
+
+    //Get all page data for user according to his role
+    [HttpGet]
+    public async Task<IActionResult> GetByFilter(FilterRequest request)
+    {
+        try
+        {
+            var estates = await Repository.GetEstateByFilter(request.category, request.minprice,
+                request.maxprice, request.rooms);
+            return Ok(estates);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest("Can't find any data by request params. Message:\n" + ex.Message);
+        }
+        
+    }
+
+
     [HttpGet]
     public async Task<IActionResult> Get()
     {
