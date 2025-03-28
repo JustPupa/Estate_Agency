@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Real_Estate_Agency.Contracts;
 using Real_Estate_Agency.Dto;
@@ -18,7 +17,7 @@ public class SpecsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Login([FromBody]UserRequest request)
     {
-        var user = Repository.GetByCredentials(request.login, request.password);
+        var user = await Repository.GetByCredentialsAsync(request.login, request.password);
         string cookieKey = CookieGenerator.RandomString(20);
         if (user is not null)
         {
@@ -28,21 +27,24 @@ public class SpecsController : ControllerBase
         }
         return Unauthorized("Login or password is invalid. Try again");
     }
-    [HttpPost]
-    public async Task<IActionResult> Authorize([FromBody] AuthorizationRequest request)
+    [HttpGet]
+    public async Task<IActionResult> GetUserData(AuthorizationRequest request)
     {
-        string cookieKey;
-        if (request.cookiekey is not null)
+        if (request.cookiekey is null)
         {
-            cookieKey = request.cookiekey;
+           return BadRequest("Decrypt key is deprecated or incorrect");
         }
-        else return BadRequest("Authorization from another session attempt");
-        string encLogin = StringCipher.Decrypt(request.elogin, cookieKey);
-        string encPassword = StringCipher.Decrypt(request.epassword, cookieKey);
-        var user = Repository.GetByCredentials(encLogin, encPassword);
+        string cookieKey = request.cookiekey;
+        if (request.elogin is null || request.epassword is null)
+        {
+            return BadRequest("Login or password is missing");
+        }
+        string login = StringCipher.Decrypt(request.elogin, cookieKey);
+        string password = StringCipher.Decrypt(request.epassword, cookieKey);
+        var user = await Repository.GetByCredentialsAsync(login, password);
         return user?.Role_Id switch
         {
-            //Страница обычного авторизованного пользователя
+            //Regular user page
             1 => Ok(new AuthorizationResponse(
                 user,
                 Repository.GetAllCategories(),
@@ -57,7 +59,7 @@ public class SpecsController : ControllerBase
                 Repository.GetEstatesByAuthor(user.Id)?.Select(e => EstateFull.EstateToFull(e)).ToList()
             )),
             //Гостевой режим
-            _ => BadRequest("No page is available for those credits")
+            _ => BadRequest("No page is available for provided credentials")
         };
     }
     [HttpGet]

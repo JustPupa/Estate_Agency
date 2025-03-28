@@ -1,18 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\AspNetReact\\Real_Estate_Agency\\",
+  "WorkspaceRootPath": "D:\\Estate_Agency\\Server_side\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|d:\\aspnetreact\\real_estate_agency\\real_estate_agency\\controllers\\specscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|d:\\estate_agency\\server_side\\real_estate_agency\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|solutionrelative:real_estate_agency\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|d:\\estate_agency\\server_side\\real_estate_agency\\controllers\\specscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|solutionrelative:real_estate_agency\\controllers\\specscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|d:\\aspnetreact\\real_estate_agency\\real_estate_agency\\contracts\\userrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|d:\\estate_agency\\server_side\\real_estate_agency\\contracts\\userrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|solutionrelative:real_estate_agency\\contracts\\userrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|d:\\aspnetreact\\real_estate_agency\\real_estate_agency\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|solutionrelative:real_estate_agency\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|d:\\estate_agency\\server_side\\real_estate_agency\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AB50F03-4EBB-47F0-A6E6-CD6F78D237A6}|Real_Estate_Agency\\Real_Estate_Agency.csproj|solutionrelative:real_estate_agency\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,39 +30,52 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Program.cs",
+              "RelativeDocumentMoniker": "Real_Estate_Agency\\Program.cs",
+              "ToolTip": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Program.cs",
+              "RelativeToolTip": "Real_Estate_Agency\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T15:19:50.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UserRequest.cs",
-              "DocumentMoniker": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\Contracts\\UserRequest.cs",
+              "DocumentMoniker": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Contracts\\UserRequest.cs",
               "RelativeDocumentMoniker": "Real_Estate_Agency\\Contracts\\UserRequest.cs",
-              "ToolTip": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\Contracts\\UserRequest.cs",
+              "ToolTip": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Contracts\\UserRequest.cs",
               "RelativeToolTip": "Real_Estate_Agency\\Contracts\\UserRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T15:20:45.944Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Repository.cs",
-              "DocumentMoniker": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\Repositories\\Repository.cs",
+              "DocumentMoniker": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Repositories\\Repository.cs",
               "RelativeDocumentMoniker": "Real_Estate_Agency\\Repositories\\Repository.cs",
-              "ToolTip": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\Repositories\\Repository.cs",
+              "ToolTip": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Repositories\\Repository.cs",
               "RelativeToolTip": "Real_Estate_Agency\\Repositories\\Repository.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowBYAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-25T14:53:01.696Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "SpecsController.cs",
-              "DocumentMoniker": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\Controllers\\SpecsController.cs",
+              "DocumentMoniker": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Controllers\\SpecsController.cs",
               "RelativeDocumentMoniker": "Real_Estate_Agency\\Controllers\\SpecsController.cs",
-              "ToolTip": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\Controllers\\SpecsController.cs",
+              "ToolTip": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Controllers\\SpecsController.cs",
               "RelativeToolTip": "Real_Estate_Agency\\Controllers\\SpecsController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAxwCAAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAMwCsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T13:08:09.244Z",
               "EditorCaption": ""

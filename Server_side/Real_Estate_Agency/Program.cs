@@ -1,5 +1,8 @@
+using Real_Estate_Agency.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
+builder.Services.AddTransient<EstateContext>();
 builder.Services.AddCors(option =>
 {
     option.AddDefaultPolicy(policy => 

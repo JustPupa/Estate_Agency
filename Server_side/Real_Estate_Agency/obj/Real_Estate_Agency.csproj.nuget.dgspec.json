@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\Real_Estate_Agency.csproj": {}
+    "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Real_Estate_Agency.csproj": {}
   },
   "projects": {
-    "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\Real_Estate_Agency.csproj": {
+    "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Real_Estate_Agency.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\Real_Estate_Agency.csproj",
+        "projectUniqueName": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Real_Estate_Agency.csproj",
         "projectName": "Real_Estate_Agency",
-        "projectPath": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\Real_Estate_Agency.csproj",
+        "projectPath": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Real_Estate_Agency.csproj",
         "packagesPath": "C:\\Users\\АНДРЕЙ\\.nuget\\packages\\",
-        "outputPath": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\obj\\",
+        "outputPath": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

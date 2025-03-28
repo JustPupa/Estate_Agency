@@ -3,13 +3,9 @@ using Real_Estate_Agency.Models;
 
 namespace Real_Estate_Agency.Repositories
 {
-    //Класс - репозиторий. Используется для выборки из базы данных, для того, чтобы не обращаться
-    //к ней напрямую, предоставляет только открытые методы (принцип инкапсуляции)
-    public static class Repository
+    public class Repository
     {
         private static readonly EstateContext? context;
-        //Статический конструктор - срабатывает только один раз при первом обращении
-        //к классу и инициализирует поле с контектом данных нашей базы
         static Repository()
         {
             context = new EstateContext();
@@ -25,16 +21,16 @@ namespace Real_Estate_Agency.Repositories
             return context?.Users.First(u => u.Id == id);
         }
         //Найти пользователя по логину и паролю
-        public static User? GetByCredentials(string login, string password)
+        public async static Task<User?> GetByCredentialsAsync(string login, string password)
         {
-            return context?.Users.FirstOrDefault(u => u.Login == login && u.Password == password);
+            return await context?.Users?.FirstOrDefaultAsync(u => u.Login == login && u.Password == password); ;
         }
         //Создать нового пользователя-клиента
         public static bool CreateClient(string login, string name, string password)
         {
             try
             {
-                if (GetByCredentials(login, password) != null)
+                if (GetByCredentialsAsync(login, password) != null)
                 {
                     return false;
                 }
@@ -264,42 +260,33 @@ namespace Real_Estate_Agency.Repositories
                 context?.SaveChanges();
             }
         }
+    }
 
-        //Класс - контекст для обращения к базе данных. Используется только репозиторием
-        //для того, чтобы не нарушать внутреннюю логику приложения
-        private class EstateContext : DbContext
+    public class EstateContext : DbContext
+    {
+        public DbSet<User> Users { get; set; }
+        public DbSet<RealEstate> Estates { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<EstatePhoto> EstatePhotos { get; set; }
+        public DbSet<UserFavorites> UserFavorites { get; set; }
+
+        public EstateContext()
         {
-            public DbSet<User> Users { get; set; }
-            public DbSet<RealEstate> Estates { get; set; }
-            public DbSet<Category> Categories { get; set; }
-            public DbSet<EstatePhoto> EstatePhotos { get; set; }
-            public DbSet<UserFavorites> UserFavorites { get; set; }
+            Database.EnsureCreated();
+        }
 
-            public EstateContext()
-            {
-                //Убедиться в наличии базы данных
-                Database.EnsureCreated();
-            }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySql(
+                "Server=localhost;Database=real_estate;Uid=root;Pwd=root;",
+                new MySqlServerVersion(new Version(8, 0, 41))
+            );
+        }
 
-            //Метод для подключения к базе через Connection string
-            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            {
-                //Подключение к серверу базы данных
-                optionsBuilder.UseMySql(
-                    "Server=localhost;Database=real_estate;Uid=root;Pwd=root;",
-                    new MySqlServerVersion(new Version(8, 0, 41))
-                );
-            }
-
-            //Метод для правильного сопоставления сущностей из базы данных
-            //с классами C#, если у них есть составной ключ
-            protected override void OnModelCreating(ModelBuilder builder)
-            {
-                //Важно прописать наличие составного ключа у
-                //таблиц (идентификация сразу по 2-ум ключам)
-                builder.Entity<EstatePhoto>().HasKey(ep => new { ep.EstateId, ep.PhotoUrl });
-                builder.Entity<UserFavorites>().HasKey(uf => new { uf.UserId, uf.EstateId });
-            }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<EstatePhoto>().HasKey(ep => new { ep.EstateId, ep.PhotoUrl });
+            builder.Entity<UserFavorites>().HasKey(uf => new { uf.UserId, uf.EstateId });
         }
     }
 }

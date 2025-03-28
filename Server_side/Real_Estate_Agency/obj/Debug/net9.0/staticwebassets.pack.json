@@ -1,299 +1,299 @@
 {
   "Files": [
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\Scripts\\EstateCard.jsx",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\Scripts\\EstateCard.jsx",
       "PackagePath": "staticwebassets\\Scripts\\EstateCard.jsx"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\Scripts\\Hello.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\Scripts\\Hello.js",
       "PackagePath": "staticwebassets\\Scripts\\Hello.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\Scripts\\testReact.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\Scripts\\testReact.js",
       "PackagePath": "staticwebassets\\Scripts\\testReact.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\css\\authentication.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\css\\authentication.css",
       "PackagePath": "staticwebassets\\css\\authentication.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\css\\contacts.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\css\\contacts.css",
       "PackagePath": "staticwebassets\\css\\contacts.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\css\\realtor.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\css\\realtor.css",
       "PackagePath": "staticwebassets\\css\\realtor.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\css\\site.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\css\\userpage.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\css\\userpage.css",
       "PackagePath": "staticwebassets\\css\\userpage.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\favicon.ico",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\images\\heart.png",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\images\\heart.png",
       "PackagePath": "staticwebassets\\images\\heart.png"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\images\\home.png",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\images\\home.png",
       "PackagePath": "staticwebassets\\images\\home.png"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\images\\woman1.jpg",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\images\\woman1.jpg",
       "PackagePath": "staticwebassets\\images\\woman1.jpg"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\images\\woman2.jpg",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\images\\woman2.jpg",
       "PackagePath": "staticwebassets\\images\\woman2.jpg"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\js\\site.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
     },
     {
-      "Id": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "Id": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
     },
     {

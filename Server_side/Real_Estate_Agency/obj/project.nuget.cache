@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CRAsvV1DLQQ=",
+  "dgSpecHash": "9YAGd0OOPgw=",
   "success": true,
-  "projectFilePath": "D:\\AspNetReact\\Real_Estate_Agency\\Real_Estate_Agency\\Real_Estate_Agency.csproj",
+  "projectFilePath": "D:\\Estate_Agency\\Server_side\\Real_Estate_Agency\\Real_Estate_Agency.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\АНДРЕЙ\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.3\\microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
     "C:\\Users\\АНДРЕЙ\\.nuget\\packages\\microsoft.aspnetcore.spaservices.extensions\\9.0.3\\microsoft.aspnetcore.spaservices.extensions.9.0.3.nupkg.sha512",
