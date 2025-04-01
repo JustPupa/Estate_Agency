@@ -39,3 +39,15 @@ export const getFiltered = async (category, min, max, room) => {
         console.error(e.response.data);
     }
 }
+
+export const toggleFavorite = async (userid, estateid) => {
+    try {
+        const request = {
+            userid: userid,
+            estateid: estateid
+        };
+        return await axios.post("https://localhost:7103/specs/toggleFavorite", request);;
+    } catch(e) {
+        console.error(e);
+    }
+}

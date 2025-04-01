@@ -19,7 +19,7 @@ public class SpecsController : ControllerBase
         {
             string encLogin = StringCipher.Encrypt(request.login, cookieKey);
             string encPassword = StringCipher.Encrypt(request.password, cookieKey);
-            return Ok(new UserLoginResponse(encLogin, encPassword, cookieKey));
+            return Ok(new UserLoginResponse(encLogin, encPassword, user.Role_Id, cookieKey));
         }
         return Unauthorized("Login or password is invalid. Try again");
     }
@@ -46,7 +46,7 @@ public class SpecsController : ControllerBase
             1 => Ok(new AuthorizationResponse(
                 user,
                 Repository.GetAllCategories(),
-                Repository.GetAllEstates()?.Select(e => EstateFull.EstateToFull(e)).ToList(),
+                Repository.GetAllEstates()?.ToFull(),
                 Repository.GetFavorites(user.Id)?.Select(f => f.EstateId).ToList()
             )),
             //Личный кабинет риэлтора
@@ -54,7 +54,7 @@ public class SpecsController : ControllerBase
                 user,
                 Repository.GetAllCategories()?.Select(c => c.Id).ToList(),
                 Repository.GetAllCategories()?.Select(c => c.Name).ToList(),
-                Repository.GetEstatesByAuthor(user.Id)?.Select(e => EstateFull.EstateToFull(e)).ToList()
+                Repository.GetEstatesByAuthor(user.Id)?.ToFull()
             )),
             //Гостевой режим
             _ => BadRequest("No page is available for provided credentials")
@@ -65,45 +65,22 @@ public class SpecsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetByFilter(FilterRequest request)
     {
-        try
+        var estates = await Repository.GetEstateByFilter(request.category, request.minprice, request.maxprice, request.rooms);
+        if (estates is null || estates.Count == 0)
         {
-            var estates = await Repository.GetEstateByFilter(request.category, request.minprice,
-                request.maxprice, request.rooms);
-            return Ok(estates);
+           return BadRequest("Can't find any data by request params");
         }
-        catch (Exception ex)
+        return Ok(estates);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> ToggleFavorite([FromBody] ToggleFavRequest request)
+    {
+        var result = await Repository.ToggleFavoriteAsync(request.userid, request.estateid);
+        if (result is null)
         {
-            return BadRequest("Can't find any data by request params. Message:\n" + ex.Message);
+            return BadRequest("The requested favorite bind is incorrect. Try again");
         }
-        
+        else return Ok(result);
     }
-
-
-    [HttpGet]
-    public async Task<IActionResult> Get()
-    {
-        return Ok();
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> ValidateUser()
-    {
-        return Ok();
-    }
-
-    public async Task<JsonResult> GetNumber()
-    {
-        return new JsonResult(new Random().Next(1, 20));
-    }
-
-
-
-    //[HttpGet]
-    //public async Task<IActionResult> GetSearch(GetSpecRequest request)
-    //{
-    //    var result = SpecializationStorage.GetAll().Where(sp =>
-    //    request.Search.Contains(sp.Title) ||
-    //    request.Search.Contains(sp.Description)).ToList();
-    //    return Ok(result);
-    //}
 }

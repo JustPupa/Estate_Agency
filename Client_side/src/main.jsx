@@ -2,8 +2,9 @@ import React from "react";
 import { Provider } from "./components/ui/provider"
 import { createRoot } from "react-dom/client"
 import './index.css'
-import Login from "./components/Login.jsx"
-import UserPage from "./components/UserPage.jsx"
+import Login from "./components/Common/Login.jsx"
+import UserPage from "./components/User/UserPage.jsx"
+import RealtPage from "./components/Realtor/RealtPage.jsx"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 createRoot(document.getElementById('root')).render(
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')).render(
           <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/client" element={<UserPage />} />
+              <Route path="/realt" element={<RealtPage />} />
           </Routes>
         </BrowserRouter>
       {/* </React.StrictMode> */}

@@ -80,12 +80,16 @@ namespace Real_Estate_Agency.Repositories
             {
                 switch (roomNum)
                 {
-                    case 1: result = result?.Where(e => e.RoomCount == 1).ToList(); break;
-                    case 2: result = result?.Where(e => e.RoomCount == 2).ToList(); break;
-                    case 3: result = result?.Where(e => e.RoomCount >= 3).ToList(); break;
+                    case 1:
+                    case 2:
+                        result = result?.Where(e => e.RoomCount == roomNum).ToList();
+                        break;
+                    case 3:
+                        result = result?.Where(e => e.RoomCount >= 3).ToList();
+                        break;
                 }
             }
-            return result.Select(e => EstateFull.EstateToFull(e)).ToList();
+            return result.ToFull();
         }
         //Выбрать предложения о продаже по автору
         public static List<RealEstate>? GetEstatesByAuthor(int authid)
@@ -236,29 +240,33 @@ namespace Real_Estate_Agency.Repositories
         {
             return context?.UserFavorites?.Where(uf => uf.UserId == userId).ToList();
         }
-        //Проверить наличие записи среди избранного
-        public static bool? CheckFavorites(int userId, int estateid)
+
+        //Переключить недвижимость в избранные и обратно
+        public static async Task<bool?> ToggleFavoriteAsync(int userId, int estateid)
         {
-            return context?.UserFavorites?.Any(uf => uf.UserId == userId && uf.EstateId == estateid);
-        }
-        //Удалить из избранного
-        public static void RemoveFavorite(int userId, int estateid)
-        {
-            if (CheckFavorites(userId, estateid) == true)
+            try
             {
-                var fav = context?.UserFavorites?.Single(uf => uf.UserId == userId && uf.EstateId == estateid)!;
-                context?.UserFavorites?.Remove(fav);
-                context?.SaveChanges();
+                var isInDatabase = context?.UserFavorites?.Any(uf => uf.UserId == userId && uf.EstateId == estateid);
+                if (isInDatabase == null)
+                {
+                    return null;
+                }
+                if (isInDatabase == true)
+                {
+                    var fav = context?.UserFavorites?.Single(uf => uf.UserId == userId && uf.EstateId == estateid)!;
+                    context?.UserFavorites?.Remove(fav);
+                }
+                else
+                {
+                    var fav = new UserFavorites() { UserId = userId, EstateId = estateid };
+                    context?.UserFavorites?.Add(fav);
+                }
+                await context.SaveChangesAsync();
+                return isInDatabase;
             }
-        }
-        //Добавить из избранного
-        public static void AddFavorite(int userId, int estateid)
-        {
-            if (CheckFavorites(userId, estateid) != true)
+            catch (Exception ex)
             {
-                var fav = new UserFavorites() { UserId = userId, EstateId = estateid };
-                context?.UserFavorites?.Add(fav);
-                context?.SaveChanges();
+                throw;
             }
         }
     }
@@ -288,6 +296,14 @@ namespace Real_Estate_Agency.Repositories
         {
             builder.Entity<EstatePhoto>().HasKey(ep => new { ep.EstateId, ep.PhotoUrl });
             builder.Entity<UserFavorites>().HasKey(uf => new { uf.UserId, uf.EstateId });
+        }
+    }
+
+    public static class EstateExtension
+    {
+        public static List<EstateFull> ToFull(this List<RealEstate>? estates)
+        {
+            return [.. estates.Select(e => EstateFull.EstateToFull(e))];
         }
     }
 }
