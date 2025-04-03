@@ -91,39 +91,46 @@ namespace Real_Estate_Agency.Repositories
             }
             return result.ToFull();
         }
+
         //Выбрать предложения о продаже по автору
         public static List<RealEstate>? GetEstatesByAuthor(int authid)
         {
             return context?.Estates.Where(e => e.AuthorId == authid).ToList();
         }
-        //Добавить новое объявление
-        public static int AddEstate(decimal price, int rooms, int category, string name, string address, int size, int author)
+
+        //Выбрать предложения о продаже по автору
+        public static async Task<List<RealEstate>> GetEstatesByAuthorAsync(int authid)
         {
-            int? maxId = context?.Estates.Max(e => e.Id);
-            RealEstate realEstate = new()
-            {
-                Id = maxId == null ? 1 : (int)maxId + 1,
-                AuthorId = author,
-                Price = price,
-                RoomCount = rooms,
-                CategoryId = category,
-                Name = name,
-                Address = address,
-                Size = size
-            };
+            return await context?.Estates.Where(e => e.AuthorId == authid).ToListAsync();
+        }
+        //Добавить новое объявление
+        public static async Task<bool> AddEstateAsync(decimal price, int rooms, int category, string name, string address, int size, int author)
+        {
             try
             {
+                int? maxId = context?.Estates.Max(e => e.Id);
+                RealEstate realEstate = new()
+                {
+                    Id = maxId == null ? 1 : (int)maxId + 1,
+                    AuthorId = author,
+                    Price = price,
+                    RoomCount = rooms,
+                    CategoryId = category,
+                    Name = name,
+                    Address = address,
+                    Size = size
+                };
                 context?.Estates.Add(realEstate);
-                context?.SaveChanges();
-                return realEstate.Id;
+                await context?.SaveChangesAsync();
+                return true;
             }
             catch (Exception)
             {
-                return -1;
+                return false;
             }
         }
         //Добавить фото к объявлению
-        public static bool AddPhoto(int estateid, string photourl)
+        public static async Task<bool> AddPhotoAsync(int estateid, string photourl)
         {
             try
             {
@@ -134,12 +141,12 @@ namespace Real_Estate_Agency.Repositories
                         EstateId = estateid,
                         PhotoUrl = photourl
                     });
-                    context?.SaveChanges();
+                    await context?.SaveChangesAsync();
                     return true;
                 }
                 return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -164,7 +171,7 @@ namespace Real_Estate_Agency.Repositories
             }
         }
         //Удалить объявление и всю связанную информацию
-        public static bool DeleteEstate(int estateid)
+        public static async Task<bool> DeleteEstateAsunc(int estateid)
         {
             try
             {
@@ -184,7 +191,7 @@ namespace Real_Estate_Agency.Repositories
                     }
                     var estate = context?.Estates.Where(e => e.Id == estateid).ToList()!;
                     context?.Estates.RemoveRange(estate);
-                    context?.SaveChanges();
+                    await context?.SaveChangesAsync();
                     return true;
                 }
                 return false;
@@ -233,6 +240,11 @@ namespace Real_Estate_Agency.Repositories
         public static List<EstatePhoto>? GetPhotosByEstateId(int id)
         {
             return context?.EstatePhotos?.Where(e => e.EstateId == id).ToList();
+        }
+        //Асинхронный вариант метода выше
+        public static async Task<List<EstatePhoto>>? GetPhotosByEstateAsync(int id)
+        {
+            return await context?.EstatePhotos?.Where(e => e.EstateId == id).ToListAsync();
         }
         //Получить все избранные недвижимости по пользовательскому id
         public static List<UserFavorites>? GetFavorites(int userId)

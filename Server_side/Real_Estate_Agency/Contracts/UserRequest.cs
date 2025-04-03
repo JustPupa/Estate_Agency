@@ -14,4 +14,9 @@ namespace Real_Estate_Agency.Contracts
     public record RealtorResponse(User user, List<int>? ctgids, List<string>? ctgstr, List<EstateFull>? estates);
     public record RemovePhotoRequest(int estateid, string photourl);
     public record SaveEstateRequest(int estateid, string name, string address, decimal price, int rooms, int categoryid, int size);
+    public record RemoveEstateRequest(int estateid);
+    public record AddEstateRequest(int uid, string name, string address, decimal price, int rooms, int category, int size);
+    public record GetEstatesByUserRequest(int userid);
+    public record AddPhotoRequest(int estateid, string url);
+    public record GetPhotosRequest(int estateid);
 }
