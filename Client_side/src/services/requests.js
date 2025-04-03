@@ -20,7 +20,7 @@ export const getUserData = async (login, password, key) => {
             epassword: password,
             cookiekey: key
         }
-        return await axios.get('https://localhost:7103/specs/getUserData', { params });
+        return await axios.get('https://localhost:7103/specs/GetUserData', { params });
     } catch(e) {
         console.error(e.response.data);
     }
@@ -47,6 +47,35 @@ export const toggleFavorite = async (userid, estateid) => {
             estateid: estateid
         };
         return await axios.post("https://localhost:7103/specs/toggleFavorite", request);;
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+export const removePhoto = async (estateid, photourl) => {
+    try {
+        const request = {
+            cardid: estateid,
+            photourl: photourl
+        };
+        return await axios.post("https://localhost:7103/specs/removePhoto", request);;
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+export const saveCard = async (estateid, name, address, price, rooms, categoryid, size) => {
+    try {
+        const request = {
+            estateid: estateid,
+            name: name,
+            address: address,
+            price: price,
+            rooms: rooms,
+            categoryid: categoryid,
+            size: size
+        };
+        return await axios.post("https://localhost:7103/specs/SaveEstate", request);;
     } catch(e) {
         console.error(e);
     }

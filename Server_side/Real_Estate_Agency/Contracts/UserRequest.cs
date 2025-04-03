@@ -1,5 +1,7 @@
 ﻿using Real_Estate_Agency.Dto;
 using Real_Estate_Agency.Models;
+using System.Net;
+using System.Xml.Linq;
 
 namespace Real_Estate_Agency.Contracts
 {
@@ -10,4 +12,6 @@ namespace Real_Estate_Agency.Contracts
     public record FilterRequest(int? category, int? minprice, int? maxprice, int? rooms);
     public record ToggleFavRequest(int userid, int estateid);
     public record RealtorResponse(User user, List<int>? ctgids, List<string>? ctgstr, List<EstateFull>? estates);
+    public record RemovePhotoRequest(int estateid, string photourl);
+    public record SaveEstateRequest(int estateid, string name, string address, decimal price, int rooms, int categoryid, int size);
 }

@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Real_Estate_Agency.Contracts;
-using Real_Estate_Agency.Dto;
 using Real_Estate_Agency.Encodings;
 using Real_Estate_Agency.Networking;
 using Real_Estate_Agency.Repositories;
@@ -80,6 +79,29 @@ public class SpecsController : ControllerBase
         if (result is null)
         {
             return BadRequest("The requested favorite bind is incorrect. Try again");
+        }
+        else return Ok(result);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> RemovePhoto([FromBody] RemovePhotoRequest request)
+    {
+        var result = await Repository.DeletePhotoAsync(request.estateid, request.photourl);
+        if (result is false)
+        {
+            return BadRequest("Cannot delete selected photo. Try again");
+        }
+        else return Ok(result);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> SaveEstate([FromBody] SaveEstateRequest request)
+    {
+        var result = await Repository.UpdateEstateAsync(request.estateid, request.name, request.address,
+            request.price, request.rooms, request.categoryid, request.size);
+        if (result is false)
+        {
+            return BadRequest("Cannot update selected estate. Try again");
         }
         else return Ok(result);
     }

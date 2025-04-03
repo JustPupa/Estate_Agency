@@ -145,16 +145,15 @@ namespace Real_Estate_Agency.Repositories
             }
         }
         //Удалить фото по id карточки и URL
-        public static bool DeletePhoto(int cardid, string photourl)
+        public static async Task<bool> DeletePhotoAsync(int cardid, string photourl)
         {
             try
             {
                 if (context?.EstatePhotos.Any(p => p.EstateId == cardid && p.PhotoUrl == photourl) == true)
                 {
-                    var photo = context?.EstatePhotos
-                        .First(p => p.EstateId == cardid && p.PhotoUrl == photourl)!;
+                    var photo = context?.EstatePhotos.First(p => p.EstateId == cardid && p.PhotoUrl == photourl)!;
                     context?.EstatePhotos.Remove(photo);
-                    context?.SaveChanges();
+                    await context?.SaveChangesAsync();
                     return true;
                 }
                 return false;
@@ -196,8 +195,8 @@ namespace Real_Estate_Agency.Repositories
             }
         }
         //Обновить поля объявления о продаже
-        public static bool UpdateEstate(int estateid, string name, decimal price,
-        int rooms, int category, string address, int size)
+        public static async Task<bool> UpdateEstateAsync(int estateid, string name, string address, 
+            decimal price, int rooms, int category, int size)
         {
             try
             {
@@ -210,7 +209,7 @@ namespace Real_Estate_Agency.Repositories
                     estate.Name = name;
                     estate.Address = address;
                     estate.Size = size;
-                    context?.SaveChanges();
+                    await context?.SaveChangesAsync();
                     return true;
                 }
                 return false;

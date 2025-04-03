@@ -8,7 +8,7 @@ import RealtPage from "./components/Realtor/RealtPage.jsx"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 createRoot(document.getElementById('root')).render(
-  <div className="w-full flex">
+  <div className="w-full flex flex-col">
     <Provider>
       {/* Only in dev mode */}
       {/* <React.StrictMode> */}
