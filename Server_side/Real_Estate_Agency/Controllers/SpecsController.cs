@@ -122,7 +122,7 @@ public class SpecsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> RemoveEstate([FromBody] RemoveEstateRequest request)
     {
-        var result = await Repository.DeleteEstateAsunc(request.estateid);
+        var result = await Repository.DeleteEstateAsync(request.estateid);
         if (result is false)
         {
             return BadRequest("Cannot remove selected estate. Try again");

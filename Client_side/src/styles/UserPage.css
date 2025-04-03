@@ -1,0 +1,27 @@
+.categoryBlock select {
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.priceBlock button {
+    padding: 0;
+}
+
+.priceBlock input {
+    background-color: white;
+    color: black;
+}
+
+.priceBlock div[data-scope='number-input'] {
+    border: none;
+}
+
+.priceBlock div[data-part='root'] {
+    padding-bottom: 1px;
+}
+
+.roomBlock span[data-part='item-control']{
+    background-color: white;
+}
