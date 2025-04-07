@@ -17,8 +17,8 @@ namespace Real_Estate_Agency.Models
         public int AuthorId { get; set; }
         [Column("category_id")]
         public int CategoryId { get; set; }  
-        [Column("name")]
-        public string Name { get; set; }
+        [Column("description")]
+        public string Description { get; set; }
         [Column("address")]
         public string Address { get; set; }
         [Column("size")]

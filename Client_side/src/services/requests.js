@@ -72,9 +72,9 @@ export const removePhoto = async (estateid, photourl) => {
     }
 }
 
-export const saveCard = async (estateid, name, address, price, rooms, categoryid, size) => {
+export const saveCard = async (estateid, description, address, price, rooms, categoryid, size) => {
     try {
-        const request = { estateid, name, address, price, rooms, categoryid, size };
+        const request = { estateid, description, address, price, rooms, categoryid, size };
         return await axios.post("https://localhost:7103/specs/saveEstate", request);;
     } catch(e) {
         console.error(e);

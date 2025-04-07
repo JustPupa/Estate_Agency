@@ -16,10 +16,10 @@ import PriceInput from "./PriceInput"
 import { LuMaximize2  } from "react-icons/lu";
 import { createCard, getEstatesByUid } from "../../services/requests"
 
-const CreateEstate = (name, address, price, rooms, category, size, notifyEstateAdded, setEstates) => {
+const CreateEstate = (description, address, price, rooms, category, size, notifyEstateAdded, setEstates) => {
     const fetchData = async () => {
         let uid = localStorage.getItem('uid');
-        let response = await createCard(uid, name, address, price, rooms, category, size);
+        let response = await createCard(uid, description, address, price, rooms, category, size);
         if (response.status===200) {
             notifyEstateAdded(true);
             let estates = await getEstatesByUid(uid);
@@ -35,7 +35,7 @@ const CreateEstate = (name, address, price, rooms, category, size, notifyEstateA
 }
   
 export default function CreateEstateForm ({notifyEstateAdded, setEstates}) {
-    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
     const [address, setAddress] = useState("");
     const [price, setPrice] = useState('0');
     const [rooms, setRooms] = useState(1);
@@ -50,12 +50,19 @@ export default function CreateEstateForm ({notifyEstateAdded, setEstates}) {
     ]
 
     return (
-        <Theme p="4" appearance="light" colorPalette="teal" className="h-fit flex justify-center">
-            <Fieldset.Root size="lg" maxW="md" className="flex">
+        <Theme
+            p="4"
+            appearance="light"
+            colorPalette="teal"
+            display="flex"
+            justifyContent="center"
+            marginBottom="3"
+            height="fit-content">
+            <Fieldset.Root size="lg" maxW="md" display="flex">
             <Stack>
                 <Fieldset.Legend>Создать новое объявление</Fieldset.Legend>
             </Stack>
-            <Fieldset.Content className="flex flex-row!">
+            <Fieldset.Content display="flex" flexDirection="row">
                 <Stack>
                     <Field.Root>
                         <Field.Label>Цена</Field.Label>
@@ -101,8 +108,13 @@ export default function CreateEstateForm ({notifyEstateAdded, setEstates}) {
                 </Stack>
                 <Stack>
                     <Field.Root>
-                        <Field.Label>Название</Field.Label>
-                        <Input onChange={(e) => setName(e.target.value)} name="name" placeholder="Общее наименование" className="w-[200px]!"/>
+                        <Field.Label>Описание</Field.Label>
+                        <Input
+                            width="200px"
+                            onChange={(e) => setDescription(e.target.value)}
+                            name="description"
+                            placeholder="Общая информация"
+                        />
                     </Field.Root>
 
                     <Field.Root>
@@ -111,7 +123,12 @@ export default function CreateEstateForm ({notifyEstateAdded, setEstates}) {
                     </Field.Root>
                 </Stack>
             </Fieldset.Content>
-            <Button type="button" onClick={() => CreateEstate(name, address, price, rooms, category, size, notifyEstateAdded, setEstates)} alignSelf="flex-start" className="w-full">
+            <Button
+                type="button"
+                width="100%"
+                alignSelf="flex-start"
+                onClick={() => CreateEstate(description, address, price, rooms, category, size, notifyEstateAdded, setEstates)}
+                >
                 Создать объявление
             </Button>
             </Fieldset.Root>

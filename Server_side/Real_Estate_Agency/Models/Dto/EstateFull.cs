@@ -8,7 +8,7 @@ namespace Real_Estate_Agency.Dto
     public class EstateFull
     {
         public int Id { get; set; }
-        public string? Name { get; set; }
+        public string? Description { get; set; }
         public decimal Price { get; set; }
         public int RoomCount { get; set; }
         public Category? Category { get; set; }
@@ -24,7 +24,7 @@ namespace Real_Estate_Agency.Dto
             return new EstateFull()
             {
                 Id = estate.Id,
-                Name = estate.Name,
+                Description = estate.Description,
                 Price = estate.Price,
                 RoomCount = estate.RoomCount,
                 Category = Repository.GetCategoryById(estate.CategoryId),

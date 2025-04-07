@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react";
+import {
+    Spinner,
+    Text,
+    VStack
+} from "@chakra-ui/react"
 import { getUserData } from "../../services/requests"
 import UserPageFilter from "../User/UserPageFilter"
 import UserEstates from "./UserEstates";
@@ -13,11 +18,6 @@ export default function UserPage() {
    const [categories, setCategories] = useState([]);
    const [estates, setEstates] = useState([]);
    const [favorites, setFavorites] = useState([]);
-
-   const [filter, setFilter] = useState({ category: 0, min: 0, max: 0, rooms: '0' });
-
-   useEffect(() => {
-   }, [filter.category, filter.max, filter.min, filter.rooms]);
 
    useEffect(() => {
         const getPageContent = async () => {
@@ -34,9 +34,14 @@ export default function UserPage() {
     }, [])
    return status==='1'? (
     <>
-        <UserPageFilter categories={categories} filter={filter} setFilter={setFilter} setEstates={setEstates} />
+        <UserPageFilter categories={categories} setEstates={setEstates} />
         <UserEstates estates={estates} favorites={favorites} setFavorites={setFavorites} uid={uid}/>
     </>
     ) 
-    : (<h1>Page is not available</h1>);
+    : (
+        <VStack colorPalette="teal">
+            <Spinner color="colorPalette.600" />
+            <Text color="colorPalette.600">Загрузка пользовательских данных...</Text>
+        </VStack>
+    );
 };

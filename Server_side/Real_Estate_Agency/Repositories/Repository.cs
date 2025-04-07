@@ -61,12 +61,12 @@ namespace Real_Estate_Agency.Repositories
             return [.. context.Estates];
         }
         //Выбрать недвижимость по фильтру
-        public static async Task<List<EstateFull>> GetEstateByFilter(int? categoryId, decimal? priceMin, decimal? priceMax, int? roomNum)
+        public static async Task<List<EstateFull>?> GetEstateByFilterAsync(int? categoryId, decimal? priceMin, decimal? priceMax, int? roomNum)
         {
             List<RealEstate> result;
             using (var context = new EstateContext())
             {
-                result = [.. context.Estates];
+                result = await context.Estates.ToListAsync();
             }
             if (categoryId != null && categoryId != 0)
             {
@@ -123,7 +123,7 @@ namespace Real_Estate_Agency.Repositories
                     Price = price,
                     RoomCount = rooms,
                     CategoryId = category,
-                    Name = name,
+                    Description = name,
                     Address = address,
                     Size = size
                 };
@@ -224,7 +224,7 @@ namespace Real_Estate_Agency.Repositories
                     estate.Price = price;
                     estate.RoomCount = rooms;
                     estate.CategoryId = category;
-                    estate.Name = name;
+                    estate.Description = name;
                     estate.Address = address;
                     estate.Size = size;
                     await context.SaveChangesAsync();

@@ -19,9 +19,9 @@ import Stepper from "./MobileStepper";
 import RealtCategoriesSelect from "./RealtCategoriesSelect";
 import { saveCard, deleteCard, getEstatesByUid, AddPhotoToEstate, GetPhotosByEstate } from "../../services/requests"
 
-async function SaveCard(cardid, name, address, price, rooms, categoryid, size, notifyEstateSaved) {
+async function SaveCard(cardid, description, address, price, rooms, categoryid, size, notifyEstateSaved) {
   const fetchData = async () => {
-    let response = await saveCard(cardid, name, address, price, rooms, categoryid, size);
+    let response = await saveCard(cardid, description, address, price, rooms, categoryid, size);
     if (response.status===200) {
       notifyEstateSaved(true);
       setTimeout(() => {
@@ -67,7 +67,7 @@ async function AddPhoto(estate, photourl, setEstatePhotos, setPhoto) {
 };
 
 export default function EstateCard({estate, setEstates, notifyEstateSaved, notifyEstateRemoved}) {
-  const [name, setName] = useState(estate.name);
+  const [description, setDescription] = useState(estate.description);
   const [address, setAddress] = useState(estate.address);
   const [price, setPrice] = useState(estate.price);
   const [rooms, setRooms] = useState(estate.roomCount);
@@ -87,11 +87,17 @@ export default function EstateCard({estate, setEstates, notifyEstateSaved, notif
   });
 
   return (
-    <Card.Root maxW="sm" overflow="hidden">
+    <Card.Root maxW="sm" overflow="hidden" marginBottom="5">
       <Carousel images={estatePhotos} estateid={estate.id} setEstatePhotos={setEstatePhotos}/>
       <Card.Body gap="2">
+        <RealtCategoriesSelect 
+          itemList={categoryOptions}
+          initialValue={estate.category.id}
+          onChange={(e) => setCategory(e.value[0])}
+        /> 
+
         <Card.Title>
-          <Input placeholder="Название" value={name} onChange={(e) => setName(e.currentTarget.value)}/>
+          <Input placeholder="Описание" value={description} onChange={(e) => setDescription(e.currentTarget.value)}/>
         </Card.Title>
 
         <Card.Description>
@@ -114,12 +120,6 @@ export default function EstateCard({estate, setEstates, notifyEstateSaved, notif
         </NumberInput.Root>
 
         <Stepper initialValue={estate.roomCount} changeAction={(e) => setRooms(e.valueAsNumber)}/>
-
-        <RealtCategoriesSelect 
-          itemList={categoryOptions}
-          initialValue={estate.category.id}
-          onChange={(e) => setCategory(e.value[0])}
-        />
         
         <NumberInput.Root
           defaultValue={estate.size}
@@ -145,12 +145,12 @@ export default function EstateCard({estate, setEstates, notifyEstateSaved, notif
       <Card.Footer gap="2">
         <Button
           variant="solid"
-          onClick={() => SaveCard(estate.id, name, address, price, rooms, category, size, notifyEstateSaved)}
+          onClick={() => SaveCard(estate.id, description, address, price, rooms, category, size, notifyEstateSaved)}
           >Сохранить
         </Button>
 
           <Dialog.Root placement="top" motionPreset="slide-in-bottom">
-            <Dialog.Trigger className="pl-[16px]! pr-[16px]! pt-[9px]! pb-[9px]! cursor-pointer bg-red-500! rounded-sm">
+            <Dialog.Trigger padding="9px 16px" cursor="pointer" bgColor="#fb2c36" borderRadius="sm">
               <Text variant="ghost">
                 Удалить
               </Text>

@@ -51,7 +51,7 @@ export default function Carousel({images, estateid, setEstatePhotos}) {
   const side = useBreakpointValue({ base: '30%', md: '10px' })
 
   return (
-    <Box className="relative w-full truncate">
+    <Box position="relative" width="100%" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
       <link
         rel="stylesheet"
         type="text/css"
@@ -70,18 +70,24 @@ export default function Carousel({images, estateid, setEstatePhotos}) {
         right={side} top={top} transform={'translate(0%, -50%)'} zIndex={2} onClick={() => slider?.slickNext()}>
         <BiRightArrowAlt />
       </IconButton>
-      <Slider className="flex justify-center items-center" {...settings} ref={(slider) => setSlider(slider)}>
+      <Slider display="flex" justifyContent="center" alignItems="center" {...settings} ref={(slider) => setSlider(slider)}>
             {images.map((photo, index) => (
-                <div className="relative inline-block" key={index}>
-                    <Image className="block" src={photo.photoUrl} alt="Estate photo" key={index} />
-
+                <Box position="relative" display="inline-block" key={index}>
+                    <Image display="block" src={photo.photoUrl} alt="Estate photo" key={index} />
                     <Dialog.Root
                       placement="top"
                       motionPreset="slide-in-bottom"
                     >
                       <Dialog.Trigger>
                         <Icon
-                        className="absolute! top-1 left-1 m-10 bg-white p-1! rounded-full hover:brightness-70"
+                        position="absolute"
+                        top="1"
+                        left="1"
+                        margin="1"
+                        bgColor="white"
+                        padding="1"
+                        borderRadius="full"
+                        className="hover:brightness-70"
                         size="2xl"
                         color="red">
                           <BiTrash />
@@ -117,7 +123,7 @@ export default function Carousel({images, estateid, setEstatePhotos}) {
                         </Dialog.Positioner>
                       </Portal>
                     </Dialog.Root>
-                </div>
+                </Box>
             ))}
       </Slider>
     </Box>

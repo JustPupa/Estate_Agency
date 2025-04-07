@@ -4,7 +4,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function RealtCategoriesSelect({ itemList, initialValue, onChange }) {
-    return (<Select.Root onValueChange={onChange} collection={itemList} defaultValue={`${initialValue}`} size="sm" width="320px">
+    return (<Select.Root onValueChange={onChange} collection={itemList} defaultValue={`${initialValue}`} size="sm">
         <Select.HiddenSelect />
         <Select.Control>
             <Select.Trigger>

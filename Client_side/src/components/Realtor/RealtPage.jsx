@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { Stack, Alert } from "@chakra-ui/react"
+import { 
+    Stack,
+    Alert,
+    Spinner,
+    Text,
+    VStack
+} from "@chakra-ui/react"
 import { getUserData } from "../../services/requests"
 import RealtHeader from "./RealtHeader";
 import CreateEstateForm from "./CreateEstate";
@@ -9,11 +15,9 @@ export default function RealtPage() {
     const [elogin] = useState(localStorage.getItem('elogin'));
     const [epassword] = useState(localStorage.getItem('epassword'));
     const [ekey] = useState(localStorage.getItem('ekey'));
-    const [uid] = useState(localStorage.getItem('uid'));
     const [uname] = useState(localStorage.getItem('uname'));
+
     const [status, setStatus] = useState('0');
-    const [categoriesIds, setCategoriesIds] = useState([]);
-    const [categoriesNames, setCategoriesNames] = useState([]);
     const [estates, setEstates] = useState([]);
 
     const [isAddedEstate, setIsAddedEstate] = useState(false);
@@ -27,8 +31,6 @@ export default function RealtPage() {
                 setStatus('1');
                 localStorage.setItem('uid', response.data.user.id);
                 localStorage.setItem('uname', response.data.user.name);
-                setCategoriesIds(response.data.ctgids);
-                setCategoriesNames(response.data.ctgstr)
                 setEstates(response.data.estates);
             } else if (response.status===200) {
                 setStatus('-1');
@@ -40,18 +42,21 @@ export default function RealtPage() {
     if (status === "-1") return (<h1>Page is not available</h1>);
 
     return status==='0'? (
-        <h1>Loading...</h1>
+        <VStack colorPalette="teal">
+            <Spinner color="colorPalette.600" />
+            <Text color="colorPalette.600">Загрузка данных...</Text>
+        </VStack>
     ) : (<>
-         <RealtHeader uname={uname} />
+         <RealtHeader />
          <CreateEstateForm notifyEstateAdded={setIsAddedEstate} setEstates={setEstates}/>
-         <RealtEstates 
-            estates={estates} 
-            setEstates={setEstates} 
-            notifyEstateSaved={setIsSavedEstate} 
+         <RealtEstates
+            estates={estates}
+            setEstates={setEstates}
+            notifyEstateSaved={setIsSavedEstate}
             notifyEstateRemoved={setIsRemovedEstate}
         />
         {
-        isSavedEstate? (<Stack gap="4" width="full" className="fixed w-auto! left-[50%] bottom-2 z-10">
+        isSavedEstate? (<Stack gap="4" position="fixed" width="auto" left="50%" bottom="2" zIndex="10">
             <Alert.Root status="success">
                 <Alert.Indicator />
                 <Alert.Title>Успешно сохранено!</Alert.Title>
@@ -59,7 +64,7 @@ export default function RealtPage() {
             </Stack>) : (<></>)
         }
         {
-        isAddedEstate? (<Stack gap="4" width="full" className="fixed w-auto! left-[50%] bottom-2 z-10">
+        isAddedEstate? (<Stack gap="4" position="fixed" width="auto" left="50%" bottom="2" zIndex="10">
             <Alert.Root status="success">
                 <Alert.Indicator />
                 <Alert.Title>Успешно добавлено!</Alert.Title>
@@ -67,7 +72,7 @@ export default function RealtPage() {
             </Stack>) : (<></>)
         }
         {
-        isRemovedEstate? (<Stack gap="4" width="full" className="fixed w-auto! left-[50%] bottom-2 z-10">
+        isRemovedEstate? (<Stack gap="4" position="fixed" width="auto" left="50%" bottom="2" zIndex="10">
             <Alert.Root status="success">
                 <Alert.Indicator />
                 <Alert.Title>Объявление удалено!</Alert.Title>

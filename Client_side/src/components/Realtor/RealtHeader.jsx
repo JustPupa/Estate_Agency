@@ -1,6 +1,7 @@
-import { CloseButton, Stack } from "@chakra-ui/react"
+import { Flex, Box } from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom";
 import { FaPersonShelter } from "react-icons/fa6";
+import { ImExit } from "react-icons/im";
 
 const ReturnToLogin = (navigate) => {
     localStorage.setItem('elogin', '');
@@ -11,19 +12,38 @@ const ReturnToLogin = (navigate) => {
     navigate('/');
 }
 
-export default function RealtHeader({uname}) {
+export default function RealtHeader() {
     const navigate = useNavigate();
     
-    return <header className="top-0 w-full flex p-3! text-2xl! bg-[#0d9488]">
-        <div className="flex">
-            <div className="flex items-center font-medium!">ЛИЧНЫЙ КАБИНЕТ РИЭЛТОРА</div>
-            <div className="flex items-center bg-black p-1! ml-2! rounded-md">
-                <FaPersonShelter className="h-6! w-6! p-1!"/>
-                <div className="flex items-center font-bold! p-1! text-base!">{uname}</div>
-            </div>
-        </div>
-        <Stack className="flex justify-center ml-auto!">
-            <CloseButton onClick={() => ReturnToLogin(navigate)} variant="subtle" className="self-end" />
-        </Stack>
-    </header>
+    return <Flex top="0" width="full" padding="3" fontSize="2xl" bgColor="#0d9488">
+        <Flex>
+            <Flex alignItems="center" fontWeight="medium">
+                ЛИЧНЫЙ КАБИНЕТ РИЭЛТОРА
+            </Flex>
+            <Flex alignItems="center" bgColor="black" padding="1" marginLeft="1" borderRadius="md">
+                <Box height="7" width="7" padding="1">
+                    <FaPersonShelter className="h-full w-full"/>
+                </Box>
+            </Flex>
+            <Flex alignItems="center" fontWeight="bold" padding="1">
+                {localStorage.getItem('uname')}
+            </Flex>
+        </Flex>
+        <Flex justifyContent="center" marginLeft="auto">
+            <Box
+                alignItems="center"
+                bgColor="black"
+                width="1.8em"
+                height="1.8em"
+                borderRadius="md"
+                padding="6px"
+                paddingRight="3px"
+                cursor="pointer">
+                <ImExit
+                    onClick={() => ReturnToLogin(navigate)}
+                    className="w-full h-full hover:brightness-[0.5] hover:scale-[1.1]" 
+                />
+            </Box>
+        </Flex>
+    </Flex>
 }

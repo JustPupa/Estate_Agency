@@ -1,5 +1,4 @@
 import { InputGroup, NumberInput } from "@chakra-ui/react"
-import { LuDollarSign } from "react-icons/lu"
 
 export default function PriceInput({changeAction}) {
   return (

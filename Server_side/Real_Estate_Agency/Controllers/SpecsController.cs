@@ -52,8 +52,6 @@ public class SpecsController : ControllerBase
             //Личный кабинет риэлтора
             2 => Ok(new RealtorResponse(
                 user,
-                Repository.GetAllCategories()?.Select(c => c.Id).ToList(),
-                Repository.GetAllCategories()?.Select(c => c.Name).ToList(),
                 Repository.GetEstatesByAuthor(user.Id)?.ToFull()
             )),
             //Гостевой режим
@@ -77,7 +75,7 @@ public class SpecsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetByFilter(FilterRequest request)
     {
-        var estates = await Repository.GetEstateByFilter(request.category, request.minprice, request.maxprice, request.rooms);
+        var estates = await Repository.GetEstateByFilterAsync(request.category, request.minprice, request.maxprice, request.rooms);
         if (estates is null || estates.Count == 0)
         {
            return BadRequest("Can't find any data by request params");
@@ -110,7 +108,7 @@ public class SpecsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> SaveEstate([FromBody] SaveEstateRequest request)
     {
-        var result = await Repository.UpdateEstateAsync(request.estateid, request.name, request.address,
+        var result = await Repository.UpdateEstateAsync(request.estateid, request.description, request.address,
             request.price, request.rooms, request.categoryid, request.size);
         if (result is false)
         {
@@ -133,13 +131,13 @@ public class SpecsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateEstate([FromBody] AddEstateRequest request)
     {
-        if (request.price == 0 || request.name == string.Empty || request.address == string.Empty ||
+        if (request.price == 0 || request.description == string.Empty || request.address == string.Empty ||
             request.size == 0)
         {
             return StatusCode(400, "One or more fields are empty");
         }
         var result = await Repository.AddEstateAsync(request.price, request.rooms, request.category,
-            request.name, request.address, request.size, request.uid);
+            request.description, request.address, request.size, request.uid);
         if (result is false)
         {
             return StatusCode(500, "Server error. Try again");
