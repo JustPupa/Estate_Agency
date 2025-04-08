@@ -1,6 +1,6 @@
-![estate3](https://github.com/user-attachments/assets/1a018f48-558b-4e25-8013-b6c939888a6b)
-
 Estate_Agency
+=====================
+![estate3](https://github.com/user-attachments/assets/1a018f48-558b-4e25-8013-b6c939888a6b)
 =====================
 ***Estate_Agency*** is an application for a real estate agency website.
 The company provides a wide spectre of real estates, such as `houses`, `cottages`, `empty lots`, `apartments`
