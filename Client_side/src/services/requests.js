@@ -123,3 +123,12 @@ export const GetPhotosByEstate = async (estateid) => {
         console.error(e);
     }
 }
+
+export const CreateUser = async (login, username, password) => {
+    try {
+        const request = { login, username, password };
+        return await axios.post("https://localhost:7103/specs/createUser", request);;
+    } catch(e) {
+        console.error(e);
+    }
+}

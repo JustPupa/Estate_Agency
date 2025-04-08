@@ -19,4 +19,5 @@ namespace Real_Estate_Agency.Contracts
     public record GetEstatesByUserRequest(int userid);
     public record AddPhotoRequest(int estateid, string url);
     public record GetPhotosRequest(int estateid);
+    public record CreateUserRequest(string login, string username, string password);
 }

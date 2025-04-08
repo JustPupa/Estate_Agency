@@ -160,10 +160,25 @@ public class SpecsController : ControllerBase
     public async Task<IActionResult> GetPhotosByEstate(GetPhotosRequest request)
     {
         var result = await Repository.GetPhotosByEstateAsync(request.estateid);
-        if (result is not null && result.Any())
+        if (result is not null && result.Count != 0)
         {
             return Ok(result);
         }
         return BadRequest("No photos found. Check database connection");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
+    {
+        if (Repository.IsLoginInDatabase(request.login))
+        {
+            return Ok(new { StatusCode = 1 });
+        }
+        var result = await Repository.CreateUserAsync(request.login, request.username, request.password);
+        if (result is false)
+        {
+            return BadRequest(new { StatusCode = 2 });
+        }
+        else return Ok(new { StatusCode = 2 });
     }
 }

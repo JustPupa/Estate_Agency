@@ -24,12 +24,16 @@ namespace Real_Estate_Agency.Repositories
             using var context = new EstateContext();
             return await context.Users.FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
         }
-        //Создать нового пользователя-клиента
-        public static bool CreateClient(string login, string name, string password)
+        public static bool IsLoginInDatabase(string login)
+        {
+            using var context = new EstateContext();
+            return context.Users.Any(u => u.Login.ToLower() == login.ToLower());
+        }
+        public static async Task<bool> CreateUserAsync(string login, string name, string password)
         {
             try
             {
-                if (GetByCredentialsAsync(login, password) != null)
+                if (GetByCredentialsAsync(login, password)?.Result != null)
                 {
                     return false;
                 }
@@ -46,13 +50,13 @@ namespace Real_Estate_Agency.Repositories
                     Phone = null
                 };
                 context.Users.Add(user);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
+                return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }
-            return true;
         }
         //Выбрать все предложения о продаже
         public static List<RealEstate>? GetAllEstates()
@@ -256,7 +260,7 @@ namespace Real_Estate_Agency.Repositories
             return [.. context.EstatePhotos.Where(e => e.EstateId == id)];
         }
         //Асинхронный вариант метода выше
-        public static async Task<List<EstatePhoto>>? GetPhotosByEstateAsync(int id)
+        public static async Task<List<EstatePhoto>> GetPhotosByEstateAsync(int id)
         {
             using var context = new EstateContext();
             return await context.EstatePhotos.Where(e => e.EstateId == id).ToListAsync();
