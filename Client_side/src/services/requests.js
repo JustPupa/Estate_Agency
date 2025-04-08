@@ -6,7 +6,7 @@ export const cryptCredentials = async (login, password) => {
             login: login,
             password: password
         };
-        const response = await axios.post("https://localhost:7103/specs/login", request);
+        const response = await axios.post("https://localhost:7103/estate/login", request);
         return response;
     } catch(e) {
         console.error(e);
@@ -20,7 +20,7 @@ export const getUserData = async (login, password, key) => {
             epassword: password,
             cookiekey: key
         }
-        return await axios.get('https://localhost:7103/specs/GetUserData', { params });
+        return await axios.get('https://localhost:7103/estate/GetUserData', { params });
     } catch(e) {
         console.error(e.response.data);
     }
@@ -31,7 +31,7 @@ export const getEstatesByUid = async (uid) => {
         const params = {
             userid: uid
         }
-        return await axios.get('https://localhost:7103/specs/getEstatesByUserId', { params });
+        return await axios.get('https://localhost:7103/estate/getEstatesByUserId', { params });
     } catch(e) {
         console.error(e.response.data);
     }
@@ -45,7 +45,7 @@ export const getFiltered = async (category, min, max, room) => {
             maxprice: max,
             rooms: room
         }
-        return await axios.get('https://localhost:7103/specs/getByFilter', { params });
+        return await axios.get('https://localhost:7103/estate/getByFilter', { params });
     } catch(e) {
         console.error(e.response.data);
     }
@@ -57,7 +57,7 @@ export const toggleFavorite = async (userid, estateid) => {
             userid: userid,
             estateid: estateid
         };
-        return await axios.post("https://localhost:7103/specs/toggleFavorite", request);;
+        return await axios.post("https://localhost:7103/estate/toggleFavorite", request);;
     } catch(e) {
         console.error(e);
     }
@@ -66,7 +66,7 @@ export const toggleFavorite = async (userid, estateid) => {
 export const removePhoto = async (estateid, photourl) => {
     try {
         const request = { estateid, photourl };
-        return await axios.post("https://localhost:7103/specs/removePhoto", request);;
+        return await axios.post("https://localhost:7103/estate/removePhoto", request);;
     } catch(e) {
         console.error(e);
     }
@@ -75,7 +75,7 @@ export const removePhoto = async (estateid, photourl) => {
 export const saveCard = async (estateid, description, address, price, rooms, categoryid, size) => {
     try {
         const request = { estateid, description, address, price, rooms, categoryid, size };
-        return await axios.post("https://localhost:7103/specs/saveEstate", request);;
+        return await axios.post("https://localhost:7103/estate/saveEstate", request);;
     } catch(e) {
         console.error(e);
     }
@@ -84,16 +84,16 @@ export const saveCard = async (estateid, description, address, price, rooms, cat
 export const deleteCard = async (estateid) => {
     try {
         const request = { estateid };
-        return await axios.post("https://localhost:7103/specs/removeEstate", request);;
+        return await axios.post("https://localhost:7103/estate/removeEstate", request);;
     } catch(e) {
         console.error(e);
     }
 }
 
-export const createCard = async (uid, name, address, price, rooms, category, size) => {
+export const createCard = async (uid, description, address, price, rooms, category, size) => {
     try {
-        const request = { uid, name, address, price, rooms, category, size };
-        return await axios.post("https://localhost:7103/specs/createEstate", request);;
+        const request = { uid, description, address, price, rooms, category, size };
+        return await axios.post("https://localhost:7103/estate/createEstate", request);;
     } catch(e) {
         if (e.status === undefined) {
             return {
@@ -104,10 +104,10 @@ export const createCard = async (uid, name, address, price, rooms, category, siz
     }
 }
 
-export const AddPhotoToEstate = async (estateid, url) => {
+export const AddPhotoToEstate = async (estateid, photourl) => {
     try {
-        const request = { estateid, url };
-        return await axios.post("https://localhost:7103/specs/addPhoto", request);;
+        const request = { estateid, photourl };
+        return await axios.post("https://localhost:7103/estate/addPhoto", request);;
     } catch(e) {
         console.error(e);
     }
@@ -118,7 +118,7 @@ export const GetPhotosByEstate = async (estateid) => {
         const params = {
             estateid
         }
-        return await axios.get('https://localhost:7103/specs/getPhotosByEstate', { params });
+        return await axios.get('https://localhost:7103/estate/getPhotosByEstate', { params });
     } catch(e) {
         console.error(e);
     }
@@ -127,7 +127,7 @@ export const GetPhotosByEstate = async (estateid) => {
 export const CreateUser = async (login, username, password) => {
     try {
         const request = { login, username, password };
-        return await axios.post("https://localhost:7103/specs/createUser", request);;
+        return await axios.post("https://localhost:7103/estate/createUser", request);;
     } catch(e) {
         console.error(e);
     }

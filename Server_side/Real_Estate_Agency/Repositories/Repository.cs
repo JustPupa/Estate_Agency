@@ -19,7 +19,7 @@ namespace Real_Estate_Agency.Repositories
             return context?.Users.First(u => u.Id == id);
         }
         //Найти пользователя по логину и паролю
-        public async static Task<User?>? GetByCredentialsAsync(string login, string password)
+        public async static Task<User?> GetByCredentialsAsync(string login, string password)
         {
             using var context = new EstateContext();
             return await context.Users.FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
@@ -58,6 +58,27 @@ namespace Real_Estate_Agency.Repositories
                 return false;
             }
         }
+
+        public static async Task<bool> RemoveUserByCredentialsAsync(string login, string password)
+        {
+            try
+            {
+                using var context = new EstateContext();
+                if (!context.Users.Any(u => u.Login == login && u.Password == password))
+                {
+                    return false;
+                }
+                User user = context.Users.First(u => u.Login == login && u.Password == password);
+                context.Users.Remove(user);
+                await context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         //Выбрать все предложения о продаже
         public static List<RealEstate>? GetAllEstates()
         {
@@ -169,6 +190,10 @@ namespace Real_Estate_Agency.Repositories
             try
             {
                 using var context = new EstateContext();
+                if (!context.Estates.Any(e => e.Id == cardid))
+                {
+                    return false;
+                }
                 if (context.EstatePhotos.Any(p => p.EstateId == cardid && p.PhotoUrl == photourl) == true)
                 {
                     var photo = context.EstatePhotos.First(p => p.EstateId == cardid && p.PhotoUrl == photourl)!;
@@ -278,6 +303,10 @@ namespace Real_Estate_Agency.Repositories
             try
             {
                 using var context = new EstateContext();
+                if (!context.Users.Any(u => u.Id == userId) || !context.Estates.Any(e => e.Id == estateid))
+                {
+                    return null;
+                }
                 var isInDatabase = context.UserFavorites.Any(uf => uf.UserId == userId && uf.EstateId == estateid);
                 if (isInDatabase == true)
                 {

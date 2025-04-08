@@ -2,10 +2,11 @@
 
 namespace Real_Estate_Agency.Encodings
 {
-    class StringCipher
+    public class StringCipher
     {
-        public static string Encrypt(string plainText, string password)
+        public static string? Encrypt(string? plainText, string? password)
         {
+            if (plainText is null || password is null) return null;
             byte[] encryptionKeyBytes = CreateKey(password);
             byte[] iv = new byte[16];
             byte[] array;
