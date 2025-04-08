@@ -10,14 +10,14 @@ Vite sends an axios request to Kestrel server. Then processing occurs at the bus
 
 Main files description
 =====================
-File/Directory Name     | Content
------------------------------------|----------------------
-Client_side                        | Contains all files and React components related to direct work with the client
-Server_side                        | ASP.NET Core server files for processing business logic and accessing the database
-package.json                       | All client-side dependencies and NPM installs
-main.jsx                           | Main page with all navigations and global usings
-requests.js                        | Contains all axios reguest to server-side app
-requests.js                        | Contains all axios reguest to server-side app
-Client_side\src\components\Common\ | Common pages for client and realtor
-Client_side\src\components\Realtor\| All .jsx files related to realtor functional
-Client_side\src\components\User\   | All .jsx files related to client user functional
+File/Directory Name                 | Content
+------------------------------------|----------------------
+Client_side\                        | Contains all files and React components related to direct work with the client
+Server_side\                        | ASP.NET Core server files for processing business logic and accessing the database
+package.json                        | All client-side dependencies and NPM installs
+main.jsx                            | Main page with all navigations and global usings
+requests.js                         | Contains all axios reguest to server-side app
+requests.js                         | Contains all axios reguest to server-side app
+Client_side\src\components\Common\  | Common pages for client and realtor
+Client_side\src\components\Realtor\ | All .jsx files related to realtor functional
+Client_side\src\components\User\    | All .jsx files related to client user functional
