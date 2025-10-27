@@ -1,34 +1,34 @@
-import { Button, Card, Field, Input, Stack } from "@chakra-ui/react"
-import { cryptCredentials } from "../../services/requests"
-import { PasswordInput } from "../ui/password-input"
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
-const onLogin = (login,password, navigate) => {
-    const fetchData = async () => {
-        let logresponse = await cryptCredentials(login, password);
-        if (logresponse.status===200) {
-          localStorage.setItem('elogin', logresponse.data.crlogin);
-          localStorage.setItem('epassword', logresponse.data.crpassword);
-          localStorage.setItem('ekey', logresponse.data.cookie);
-          if (logresponse.data.role === 1) {
-            navigate('/client');
-          } else if (logresponse.data.role === 2) {
-            navigate('/realt');
-          };
-        }
-    }
-    fetchData();
-};
-
-const onRegistration = (navigate) => {
-  navigate('/registration');
-}
+import { useNavigate } from "react-router-dom";
+import { Button, Card, Field, Input, Stack } from "@chakra-ui/react";
+import { PasswordInput } from "../ui/password-input";
+import { cryptCredentials } from "../../services/requests";
 
 export default function Login() {
-    const[login, setLogin] = useState('');
-    const[password, setPassword] = useState('');
+    const [login, setLogin] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
+    const onLogin = () => {
+      const fetchData = async () => {
+          let logresponse = await cryptCredentials(login, password);
+          if (logresponse.status===200) {
+            localStorage.setItem('elogin', logresponse.data.crlogin);
+            localStorage.setItem('epassword', logresponse.data.crpassword);
+            localStorage.setItem('ekey', logresponse.data.cookie);
+            if (logresponse.data.role === 1) {
+              navigate('/client');
+            } else if (logresponse.data.role === 2) {
+              navigate('/realt');
+            };
+          }
+      }
+      fetchData();
+    };
+
+    const onRegistration = () => {
+      navigate('/registration');
+    }
 
     return (
     <Card.Root maxWidth="sm" margin="auto">
@@ -51,8 +51,8 @@ export default function Login() {
       </Stack>
     </Card.Body>
     <Card.Footer justifyContent="flex-end">
-      <Button variant="outline" onClick={() => onLogin(login,password, navigate)}>Далее</Button>
-      <Button variant="solid" onClick={() => onRegistration(navigate)}>Регистрация</Button>
+      <Button variant="outline" onClick={onLogin}>Далее</Button>
+      <Button variant="solid" onClick={onRegistration}>Регистрация</Button>
     </Card.Footer>
   </Card.Root>
 )}

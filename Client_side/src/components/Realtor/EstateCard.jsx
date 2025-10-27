@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { 
   Button, 
   Card, 
@@ -11,22 +12,27 @@ import {
   CloseButton,
   Group
 } from "@chakra-ui/react";
-import { useState } from "react";
 import { LuMaximize2  } from "react-icons/lu";
 import { FaCamera } from "react-icons/fa";
 import Carousel from "./Carousel";
 import Stepper from "./MobileStepper";
 import RealtCategoriesSelect from "./RealtCategoriesSelect";
-import { saveCard, deleteCard, getEstatesByUid, AddPhotoToEstate, GetPhotosByEstate } from "../../services/requests"
+import {
+  saveCard,
+  deleteCard,
+  getEstatesByUid,
+  addPhotoToEstate,
+  getPhotosByEstate 
+} from "../../services/requests";
 
-async function SaveCard(cardid, description, address, price, rooms, categoryid, size, notifyEstateSaved) {
+const updateCard = (cardid, description, address, price, rooms, categoryid, size, notifyEstateSaved) => {
   const fetchData = async () => {
     let response = await saveCard(cardid, description, address, price, rooms, categoryid, size);
-    if (response.status===200) {
+    if (response.status === 200) {
       notifyEstateSaved(true);
       setTimeout(() => {
         notifyEstateSaved(false);
-      }, "3000");
+      }, 3000);
     } else {
         console.log(response);
     }
@@ -34,17 +40,17 @@ async function SaveCard(cardid, description, address, price, rooms, categoryid, 
   fetchData();
 };
 
-async function removeCard(cardid, notifyEstateRemoved, setEstates) {
+const removeCard = (cardid, notifyEstateRemoved, setEstates) => {
   const fetchData = async () => {
-    let uid = localStorage.getItem('uid');
+    const uid = localStorage.getItem('uid');
     let response = await deleteCard(cardid);
-    if (response.status===200) {
+    if (response.status === 200) {
       notifyEstateRemoved(true);
       let estates = await getEstatesByUid(uid);
       setEstates(estates.data);
       setTimeout(() => {
         notifyEstateRemoved(false);
-      }, "3000");
+      }, 3000);
     } else {
         console.log(response);
     }
@@ -52,11 +58,11 @@ async function removeCard(cardid, notifyEstateRemoved, setEstates) {
   fetchData();
 };
 
-async function AddPhoto(estate, photourl, setEstatePhotos, setPhoto) {
+const addPhoto = (estate, photourl, setEstatePhotos, setPhoto) => {
   const fetchData = async () => {
-    let response = await AddPhotoToEstate(estate, photourl);
-    if (response.status===200) {
-      let photos = await GetPhotosByEstate(estate);
+    let response = await addPhotoToEstate(estate, photourl);
+    if (response.status === 200) {
+      let photos = await getPhotosByEstate(estate);
       setEstatePhotos(photos.data);
       setPhoto("");
     } else {
@@ -73,10 +79,8 @@ export default function EstateCard({estate, setEstates, notifyEstateSaved, notif
   const [rooms, setRooms] = useState(estate.roomCount);
   const [category, setCategory] = useState(estate.category.id);
   const [size, setSize] = useState(estate.size);
-
   const [estatePhotos, setEstatePhotos] = useState(estate.photos);
   const [photo, setPhoto] = useState("");
-  
   const categoryOptions = createListCollection({
     items: [
       { label: "Дома", value: "1" },
@@ -85,7 +89,8 @@ export default function EstateCard({estate, setEstates, notifyEstateSaved, notif
       { label: "Участки", value: "4" },
     ],
   });
-
+  const hasDigitsOnly = (e) => /[\+\-\.\,]$/.test(e.key);
+  
   return (
     <Card.Root maxW="sm" overflow="hidden" marginBottom="5">
       <Carousel images={estatePhotos} estateid={estate.id} setEstatePhotos={setEstatePhotos}/>
@@ -94,16 +99,13 @@ export default function EstateCard({estate, setEstates, notifyEstateSaved, notif
           itemList={categoryOptions}
           initialValue={estate.category.id}
           onChange={(e) => setCategory(e.value[0])}
-        /> 
-
+        />
         <Card.Title>
           <Input placeholder="Описание" value={description} onChange={(e) => setDescription(e.currentTarget.value)}/>
         </Card.Title>
-
         <Card.Description>
           <Input placeholder="Адрес" value={address} onChange={(e) => setAddress(e.currentTarget.value)}/>
         </Card.Description>
-
         <NumberInput.Root onValueChange={(e) => setPrice(e.valueAsNumber)}
           defaultValue={price}
           formatOptions={{
@@ -118,37 +120,32 @@ export default function EstateCard({estate, setEstates, notifyEstateSaved, notif
           <NumberInput.Control />
           <NumberInput.Input />
         </NumberInput.Root>
-
         <Stepper initialValue={estate.roomCount} changeAction={(e) => setRooms(e.valueAsNumber)}/>
-        
         <NumberInput.Root
           defaultValue={estate.size}
           onValueChange={(e) => setSize(e.valueAsNumber)}
           width="200px"
-          onKeyDown={e => /[\+\-\.\,]$/.test(e.key) && e.preventDefault()}
+          onKeyDown={e => hasDigitsOnly(e) && e.preventDefault()}
         >
           <NumberInput.Control/>
           <InputGroup startElement={<LuMaximize2 />}>
             <NumberInput.Input />
           </InputGroup>
         </NumberInput.Root>
-
         <Group attached w="full" maxW="sm">
           <Input value={photo} onChange={(e) => setPhoto(e.target.value)} flex="1" placeholder="Ссылка на фото" />
-          <Button onClick={() => AddPhoto(estate.id, photo, setEstatePhotos, setPhoto)} bg="bg.subtle" variant="outline">
+          <Button onClick={() => addPhoto(estate.id, photo, setEstatePhotos, setPhoto)} bg="bg.subtle" variant="outline">
             <FaCamera />
             Добавить фото
           </Button>
         </Group>
-
       </Card.Body>
       <Card.Footer gap="2">
         <Button
           variant="solid"
-          onClick={() => SaveCard(estate.id, description, address, price, rooms, category, size, notifyEstateSaved)}
+          onClick={() => updateCard(estate.id, description, address, price, rooms, category, size, notifyEstateSaved)}
           >Сохранить
         </Button>
-
           <Dialog.Root placement="top" motionPreset="slide-in-bottom">
             <Dialog.Trigger padding="9px 16px" cursor="pointer" bgColor="#fb2c36" borderRadius="sm">
               <Text variant="ghost">

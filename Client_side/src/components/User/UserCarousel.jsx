@@ -1,30 +1,28 @@
-import React from 'react'
+import React from "react";
 import {
   Box,
   IconButton,
   useBreakpointValue,
   Image
-} from '@chakra-ui/react'
-import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi'
-import Slider from 'react-slick'
-
-const settings = {
-  dots: true,
-  arrows: false,
-  fade: true,
-  infinite: true,
-  autoplay: true,
-  speed: 500,
-  autoplaySpeed: 5000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-}
+} from "@chakra-ui/react";
+import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
+import Slider from "react-slick";
 
 export default function UserCarousel({images}) {
-  const [slider, setSlider] = React.useState(null)
-
-  const top = useBreakpointValue({ base: '90%', md: '50%' })
-  const side = useBreakpointValue({ base: '30%', md: '10px' })
+  const settings = {
+    dots: true,
+    arrows: false,
+    fade: true,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 5000,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+  const [slider, setSlider] = React.useState(null);
+  const top = useBreakpointValue({ base: '90%', md: '50%' });
+  const side = useBreakpointValue({ base: '30%', md: '10px' });
 
   return (
     <Box position="relative" width="100%" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">
@@ -54,5 +52,5 @@ export default function UserCarousel({images}) {
             ))}
       </Slider>
     </Box>
-  )
+  );
 }

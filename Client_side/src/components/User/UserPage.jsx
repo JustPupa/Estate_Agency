@@ -3,11 +3,11 @@ import {
     Spinner,
     Text,
     VStack
-} from "@chakra-ui/react"
-import { getUserData } from "../../services/requests"
-import UserPageFilter from "../User/UserPageFilter"
+} from "@chakra-ui/react";
+import { getUserData } from "../../services/requests";
+import UserPageFilter from "../User/UserPageFilter";
 import UserEstates from "./UserEstates";
-import '../../styles/UserPage.css'
+import "../../styles/UserPage.css";
 
 export default function UserPage() {
    const [elogin] = useState(localStorage.getItem('elogin'));
@@ -31,8 +31,9 @@ export default function UserPage() {
             }
         }
         getPageContent();
-    }, [])
-   return status==='1'? (
+    }, []);
+
+   return status === '1' ? (
     <>
         <UserPageFilter categories={categories} setEstates={setEstates} />
         <UserEstates estates={estates} favorites={favorites} setFavorites={setFavorites} uid={uid}/>
@@ -44,4 +45,4 @@ export default function UserPage() {
             <Text color="colorPalette.600">Загрузка пользовательских данных...</Text>
         </VStack>
     );
-};
+}

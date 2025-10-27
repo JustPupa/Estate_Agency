@@ -1,28 +1,28 @@
-import { Button, Card, Field, Input, Stack, Alert } from "@chakra-ui/react"
-import { PasswordInput } from "../ui/password-input"
-import PasswordStrengthBar from 'react-password-strength-bar';
-import { useState } from "react"
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CreateUser } from "../../services/requests"
+import { Button, Card, Field, Input, Stack, Alert } from "@chakra-ui/react";
+import PasswordStrengthBar from 'react-password-strength-bar';
+import { PasswordInput } from "../ui/password-input";
+import { createUser } from "../../services/requests";
 
 export default function Registration() {
     const [alert, setAlert] = useState(0);
-
-    const[login, setLogin] = useState("");
-    const[username, setUsername] = useState("");
-    const[password, setPassword] = useState("");
-    const[passwordRepeat, setPasswordRepeat] = useState("");
+    const [login, setLogin] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordRepeat, setPasswordRepeat] = useState("");
+    const scoreWords = ['Слабый пароль', 'Слабый пароль', 'Удовлетворительный пароль', 'Надёжный пароль', 'Сильный пароль'];
 
     const navigate = useNavigate();
 
     const Register = () => {
         const fetchData = async () => {
-            let response = await CreateUser(login, username, password);
+            let response = await createUser(login, username, password);
             if (response.status===200) {
                 setAlert(response.data.statusCode);
                 setTimeout(() => {
                     setAlert(0);
-                }, "3000");
+                }, 3000);
                 if(response.data.statusCode === 2) {
                     setLogin("");
                     setUsername("");
@@ -36,7 +36,8 @@ export default function Registration() {
         fetchData();
     }
 
-    return (<><Card.Root maxWidth="sm" margin="auto">
+    return (<>
+      <Card.Root maxWidth="sm" margin="auto">
         <Card.Header>
           <Card.Title>Регистрация нового пользователя</Card.Title>
         </Card.Header>
@@ -47,7 +48,12 @@ export default function Registration() {
               <Card.Description fontSize="smaller" lineHeight="1.2">
                 Придумайте простой и запоминающийся логин. В дальнейшем он будет использоваться для входа
               </Card.Description>
-              <Input border="1px solid gray" value={login} placeholder="Vasya_Pupkin_2003" onChange={(event) => setLogin(event.target.value)}/>
+              <Input
+                border="1px solid gray"
+                value={login}
+                placeholder="Vasya_Pupkin_2003"
+                onChange={(event) => setLogin(event.target.value)}
+              />
             </Field.Root>
             <Field.Root>
               <Field.Label>Никнейм</Field.Label>
@@ -65,7 +71,7 @@ export default function Registration() {
                 <PasswordInput border="1px solid gray" value={password} onChange={(e) => setPassword(e.target.value) } width="100%" size="md" />
                 <PasswordStrengthBar
                     shortScoreWord="Пароль слишком короткий"
-                    scoreWords={['Слабый пароль', 'Слабый пароль', 'Удовлетворительный пароль', 'Надёжный пароль', 'Сильный пароль']}
+                    scoreWords={scoreWords}
                     password={password} 
                 />
               </Stack>
@@ -80,15 +86,15 @@ export default function Registration() {
         <Card.Footer justifyContent="space-between">
           <Button
             variant="outline"
-            disabled={(password !== passwordRepeat) || password==="" || login==""|| username==""}
-            onClick={() => Register()}>
+            disabled={(password !== passwordRepeat) || password === "" || login === ""|| username === ""}
+            onClick={Register}>
             Зарегестрироваться
           </Button>
           <Button variant="solid" onClick={() => navigate('/')}>На главную</Button>
         </Card.Footer>
       </Card.Root>
         {
-            (alert===1)? (
+            (alert === 1)? (
             <Alert.Root
                 status="error"
                 display="flex"
@@ -108,7 +114,7 @@ export default function Registration() {
             </Alert.Root>) : <></>
         }
         {
-            (alert===2)? (<Alert.Root
+            (alert === 2) ? (<Alert.Root
                     status="success"
                     variant="solid"
                     display="flex"
@@ -120,5 +126,5 @@ export default function Registration() {
                 <Alert.Title>Аккаунт успешно создан!</Alert.Title>
             </Alert.Root>) : <></>
         }
-        </>
+  </>
 )}

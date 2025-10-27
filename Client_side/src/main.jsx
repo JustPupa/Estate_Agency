@@ -1,12 +1,12 @@
 import React from "react";
-import { Provider } from "./components/ui/provider"
-import { createRoot } from "react-dom/client"
-import './index.css'
-import Login from "./components/Common/Login.jsx"
-import UserPage from "./components/User/UserPage.jsx"
-import RealtPage from "./components/Realtor/RealtPage.jsx"
-import Registration from "./components/Common/Registration.jsx"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { createRoot } from "react-dom/client";
+import { Provider } from "./components/ui/provider";
+import Login from "./components/Common/Login.jsx";
+import UserPage from "./components/User/UserPage.jsx";
+import RealtPage from "./components/Realtor/RealtPage.jsx";
+import Registration from "./components/Common/Registration.jsx";
+import './index.css';
 
 createRoot(document.getElementById('root')).render(
   <div className="w-full flex flex-col">

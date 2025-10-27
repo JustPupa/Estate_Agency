@@ -1,20 +1,21 @@
 import {
   Select,
   Portal
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
 
 export default function CategorySelect ({itemList, filter, setFilter}) {
-  return (<Select.Root
-    collection={itemList}
-    value={filter.category}
-    defaultValue={["1"]}
-    onValueChange={(e) => {
-        setFilter({...filter, category:e.value});
-    }}
-    width="150px"
-    borderRadius="md"
-    bgColor="black"
-    marginRight="3"
+  return (
+    <Select.Root
+        collection={itemList}
+        value={filter.category}
+        defaultValue={["1"]}
+        onValueChange={(e) => {
+            setFilter({...filter, category:e.value});
+        }}
+        width="150px"
+        borderRadius="md"
+        bgColor="black"
+        marginRight="3"
     >
         <Select.HiddenSelect />
         <Select.Control>

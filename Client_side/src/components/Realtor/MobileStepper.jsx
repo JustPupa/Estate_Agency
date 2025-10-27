@@ -1,7 +1,7 @@
 import { HStack, IconButton, NumberInput } from "@chakra-ui/react"
 import { LuMinus, LuPlus } from "react-icons/lu"
 
-export default function Stepper ({initialValue, changeAction}) {
+export default function Stepper({initialValue, changeAction}) {
   return (
     <NumberInput.Root onValueChange={changeAction} defaultValue={initialValue} min="1" max="50" unstyled spinOnPress={false}>
       <HStack gap="2">

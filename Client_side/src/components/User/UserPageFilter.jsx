@@ -1,5 +1,3 @@
-import CategorySelect from "./CategorySelect";
-import { getFiltered } from "../../services/requests";
 import { 
     NumberInput,
     Field,
@@ -15,36 +13,34 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ImExit } from "react-icons/im";
-
-const ReturnToLogin = (navigate) => {
-    localStorage.setItem('elogin', '');
-    localStorage.setItem('epassword', '');
-    localStorage.setItem('ekey', '');
-    localStorage.setItem('uid', '');
-    localStorage.setItem('uname', '');
-    navigate('/');
-}
+import CategorySelect from "./CategorySelect";
+import { getFiltered } from "../../services/requests";
 
 export default function UserPageFilter({categories, setEstates }) {
     const navigate = useNavigate();
-
+    const returnToLogin = () => {
+        localStorage.setItem('elogin', '');
+        localStorage.setItem('epassword', '');
+        localStorage.setItem('ekey', '');
+        localStorage.setItem('uid', '');
+        localStorage.setItem('uname', '');
+        navigate('/');
+    };
     const [filter, setFilter] = useState({ category: ["0"], min: 0, max: 0, rooms: '0' });
-
-    function getFilter () {
+    const getFilter = () => {
         const fetchData = async () => {
             let response = await getFiltered(filter.category, filter.min, filter.max, filter.rooms);
-            if (response.status===200) {
+            if (response.status === 200) {
                 setEstates(response.data);
             }
         }
         fetchData();
-    }
-
-    function resetFilter () {
-        setFilter({ category: ["0"], min: 0, max: 0, rooms: '0' })
+    };
+    const resetFilter = () => {
+        setFilter({ category: ["0"], min: 0, max: 0, rooms: '0' });
         const fetchData = async () => {
             let response = await getFiltered(0, 0, 0, 0);
-            if (response.status===200) {
+            if (response.status === 200) {
                 setEstates(response.data);
             }
         }
@@ -66,7 +62,7 @@ export default function UserPageFilter({categories, setEstates }) {
         { label: "1", value: "1" },
         { label: "2", value: "2" },
         { label: "3+", value: "3" },
-    ]
+    ];
 
     return <Flex bgColor="#0d9488" padding="5" marginBottom="3">
         <Flex justify="space-between">
@@ -114,7 +110,7 @@ export default function UserPageFilter({categories, setEstates }) {
                 <Button
                     bgColor="crimson"
                     color="white"
-                    onClick={() => resetFilter()}>
+                    onClick={resetFilter}>
                     Сбросить фильтр
                 </Button>   
             </Flex>
@@ -130,7 +126,7 @@ export default function UserPageFilter({categories, setEstates }) {
                 paddingRight="3px"
                 cursor="pointer">
                 <ImExit
-                    onClick={() => ReturnToLogin(navigate)}
+                    onClick={returnToLogin}
                     className="w-full h-full hover:brightness-[0.5] hover:scale-[1.1]" 
                 />
             </Box>

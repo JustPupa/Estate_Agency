@@ -3,19 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { FaPersonShelter } from "react-icons/fa6";
 import { ImExit } from "react-icons/im";
 
-const ReturnToLogin = (navigate) => {
-    localStorage.setItem('elogin', '');
-    localStorage.setItem('epassword', '');
-    localStorage.setItem('ekey', '');
-    localStorage.setItem('uid', '');
-    localStorage.setItem('uname', '');
-    navigate('/');
-}
-
 export default function RealtHeader() {
     const navigate = useNavigate();
+    const realtorName = localStorage.getItem('uname');
+    const ReturnToLogin = () => {
+        localStorage.setItem('elogin', '');
+        localStorage.setItem('epassword', '');
+        localStorage.setItem('ekey', '');
+        localStorage.setItem('uid', '');
+        localStorage.setItem('uname', '');
+        navigate('/');
+    }
     
-    return <Flex top="0" width="full" padding="3" fontSize="2xl" bgColor="#0d9488">
+    return (<Flex top="0" width="full" padding="3" fontSize="2xl" bgColor="#0d9488">
         <Flex>
             <Flex alignItems="center" fontWeight="medium">
                 ЛИЧНЫЙ КАБИНЕТ РИЭЛТОРА
@@ -26,7 +26,7 @@ export default function RealtHeader() {
                 </Box>
             </Flex>
             <Flex alignItems="center" fontWeight="bold" padding="1">
-                {localStorage.getItem('uname')}
+                {realtorName}
             </Flex>
         </Flex>
         <Flex justifyContent="center" marginLeft="auto">
@@ -40,10 +40,11 @@ export default function RealtHeader() {
                 paddingRight="3px"
                 cursor="pointer">
                 <ImExit
-                    onClick={() => ReturnToLogin(navigate)}
+                    onClick={ReturnToLogin}
                     className="w-full h-full hover:brightness-[0.5] hover:scale-[1.1]" 
                 />
             </Box>
         </Flex>
     </Flex>
+    );
 }

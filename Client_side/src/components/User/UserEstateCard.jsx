@@ -5,7 +5,7 @@ import {
     Image,
     Flex
 } from "@chakra-ui/react";
-import UserCarousel from "./UserCarousel"
+import UserCarousel from "./UserCarousel";
 
 export default function UserEstateCard({category, description, address, price, rooms, size, photos, author, phone, imgclass, imgOnClick}) {
     return <Card.Root maxW="sm" overflow="hidden" marginBottom="5">
