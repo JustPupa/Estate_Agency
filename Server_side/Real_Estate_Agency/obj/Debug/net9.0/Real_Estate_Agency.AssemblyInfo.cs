@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("168b0c22-1254-4e79-8ce4-8af4f569beb1")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Real_Estate_Agency")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+070471582352cea8cdc8a9002cc99b8ed3e2a81b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f83cf41fc40144501120d241023f6f202ad68ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("Real_Estate_Agency")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Real_Estate_Agency")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
